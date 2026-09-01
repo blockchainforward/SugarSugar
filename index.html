@@ -1,0 +1,1422 @@
+<title>Cadance Company</title>
+<meta name="description" content="Cadance Company — Judith's dance studio offering salsa, bachata, contemporary, jazz, and private instruction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #F2EBE0;
+  --bg-alt:      #EAE1D4;
+  --bg-card:     #E4D9CA;
+  --ink:         #1A1020;
+  --ink-muted:   #70607A;
+  --ink-subtle:  #B0A0B8;
+  --wine:        #6C1E3C;
+  --wine-h:      #8E2B52;
+  --gold:        #B87620;
+  --gold-h:      #D48C30;
+  --border:      #D0C4B8;
+
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'DM Sans', system-ui, sans-serif;
+
+  --sz-xs:   0.72rem;
+  --sz-sm:   0.875rem;
+  --sz-base: 1rem;
+  --sz-lg:   1.125rem;
+  --sz-xl:   1.375rem;
+  --sz-2xl:  1.875rem;
+  --sz-3xl:  clamp(2rem, 4vw, 2.75rem);
+  --sz-hero: clamp(5rem, 13vw, 11rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0E0A18;
+    --bg-alt:    #160E24;
+    --bg-card:   #1C1430;
+    --ink:       #F0E8DC;
+    --ink-muted: #A890B8;
+    --ink-subtle:#5A4870;
+    --wine:      #B03562;
+    --wine-h:    #D0507A;
+    --gold:      #CA8E28;
+    --gold-h:    #E0A840;
+    --border:    #2A1E42;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0E0A18;
+  --bg-alt:    #160E24;
+  --bg-card:   #1C1430;
+  --ink:       #F0E8DC;
+  --ink-muted: #A890B8;
+  --ink-subtle:#5A4870;
+  --wine:      #B03562;
+  --wine-h:    #D0507A;
+  --gold:      #CA8E28;
+  --gold-h:    #E0A840;
+  --border:    #2A1E42;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-b);
+  font-size: var(--sz-base);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 2.5rem;
+  transition: background .35s, border-color .35s, padding .3s;
+  border-bottom: 1px solid transparent;
+}
+.nav.stuck {
+  background: var(--bg);
+  border-color: var(--border);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  color: #F0E8DC;
+  transition: color .35s;
+}
+.nav.stuck .nav-logo { color: var(--ink); }
+
+.nav-links {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: var(--sz-xs);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(240,232,220,.7);
+  transition: color .2s;
+}
+.nav.stuck .nav-links a { color: var(--ink-muted); }
+.nav-links a:hover { color: var(--gold) !important; }
+
+.nav-book {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: .5rem 1.25rem;
+  border: 1px solid rgba(240,232,220,.4);
+  color: #F0E8DC;
+  border-radius: 2px;
+  transition: all .2s;
+}
+.nav.stuck .nav-book { border-color: var(--wine); color: var(--wine); }
+.nav-book:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .4rem;
+  gap: 5px;
+  flex-direction: column;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #F0E8DC;
+  transition: all .3s;
+}
+.nav.stuck .nav-toggle span { background: var(--ink); }
+
+/* Mobile menu */
+.nav-links.open {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background: #0A0616;
+  padding: 5rem 2.5rem 3rem;
+  gap: 1.75rem;
+  z-index: 199;
+}
+.nav-links.open a {
+  font-family: var(--font-d);
+  font-size: var(--sz-2xl);
+  font-style: italic;
+  color: rgba(240,232,220,.85) !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── HERO ── */
+.hero {
+  background: #09050F;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem 2.5rem 5.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-bg canvas { width: 100%; height: 100%; }
+
+.hero-label {
+  font-size: var(--sz-xs);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+  position: relative;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: var(--sz-hero);
+  font-style: italic;
+  font-weight: 300;
+  line-height: .92;
+  color: #F0E8DC;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+.hero-title strong {
+  font-style: normal;
+  font-weight: 300;
+  color: #F0E8DC;
+  display: block;
+}
+.hero-title em.accent { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-size: var(--sz-lg);
+  font-weight: 300;
+  color: rgba(240,232,220,.55);
+  max-width: 460px;
+  line-height: 1.55;
+  margin-bottom: 2.75rem;
+  position: relative;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.btn-primary {
+  display: inline-block;
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .9rem 2.25rem;
+  background: var(--wine);
+  color: #F0E8DC;
+  border-radius: 2px;
+  cursor: pointer;
+  border: none;
+  transition: background .2s;
+}
+.btn-primary:hover { background: var(--wine-h); }
+
+.btn-ghost {
+  display: inline-block;
+  font-size: var(--sz-xs);
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .9rem 2.25rem;
+  border: 1px solid rgba(240,232,220,.3);
+  color: rgba(240,232,220,.7);
+  border-radius: 2px;
+  cursor: pointer;
+  background: none;
+  transition: all .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.25rem;
+  right: 2.5rem;
+  writing-mode: vertical-rl;
+  font-size: var(--sz-xs);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(240,232,220,.3);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.hero-scroll-hint::after {
+  content: '';
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, rgba(240,232,220,.3), transparent);
+}
+
+/* ── SHARED SECTION STYLES ── */
+section { padding: 6rem 2.5rem; }
+.section-alt { background: var(--bg-alt); }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.label {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .65rem;
+}
+.heading {
+  font-family: var(--font-d);
+  font-size: var(--sz-3xl);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 1rem;
+}
+.subhead {
+  font-size: var(--sz-lg);
+  font-weight: 300;
+  color: var(--ink-muted);
+  max-width: 540px;
+  line-height: 1.65;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 4rem;
+}
+.about-photo {
+  aspect-ratio: 3/4;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  color: var(--ink-subtle);
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: var(--sz-xl);
+  text-align: center;
+  padding: 2rem;
+}
+.about-photo small {
+  font-family: var(--font-b);
+  font-style: normal;
+  font-size: var(--sz-xs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  opacity: .6;
+}
+.about-body {
+  font-size: var(--sz-lg);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.about-body + .about-body { margin-top: 0; }
+.about-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2.5rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--border);
+}
+.stat-num {
+  font-family: var(--font-d);
+  font-size: 2.75rem;
+  font-weight: 300;
+  color: var(--wine);
+  line-height: 1;
+  margin-bottom: .3rem;
+  font-variant-numeric: tabular-nums;
+}
+.stat-lbl {
+  font-size: var(--sz-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ── CLASSES ── */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+  margin-top: 3rem;
+}
+.class-card {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  transition: background .2s;
+  cursor: default;
+}
+.class-card:hover { background: var(--bg-card); }
+.class-icon { font-size: 1.6rem; line-height: 1; margin-bottom: .25rem; }
+.class-name {
+  font-family: var(--font-d);
+  font-size: var(--sz-2xl);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.class-lvl {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.class-desc {
+  font-size: var(--sz-sm);
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin-top: .25rem;
+}
+
+/* ── SCHEDULE ── */
+.sched-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.sched-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: var(--sz-xs);
+  color: var(--ink-muted);
+}
+.leg-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sched-wrap { overflow-x: auto; }
+.sched-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(155px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  min-width: 720px;
+}
+.sched-col { background: var(--bg-alt); display: flex; flex-direction: column; }
+.sched-col-head {
+  padding: .7rem 1rem;
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--ink);
+  color: var(--bg);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sched-col-head { background: var(--wine); color: #F0E8DC; }
+}
+:root[data-theme="dark"] .sched-col-head { background: var(--wine); color: #F0E8DC; }
+
+.sched-items { display: flex; flex-direction: column; gap: 1px; flex: 1; background: var(--border); }
+.sched-item {
+  background: var(--bg);
+  padding: .85rem 1rem;
+  border-left: 3px solid transparent;
+}
+.sched-item[data-t="salsa"]       { border-color: #B03060; }
+.sched-item[data-t="bachata"]     { border-color: #2060B0; }
+.sched-item[data-t="contemporary"]{ border-color: #208060; }
+.sched-item[data-t="jazz"]        { border-color: #A06020; }
+.sched-item[data-t="hiphop"]      { border-color: #6020A0; }
+.sched-item[data-t="social"]      { border-color: #C88A28; }
+.sched-item[data-t="workshop"]    { border-color: #208090; }
+
+.sched-time {
+  font-size: var(--sz-xs);
+  color: var(--ink-subtle);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: .15rem;
+}
+.sched-name {
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: var(--sz-lg);
+  color: var(--ink);
+  line-height: 1.2;
+}
+.sched-sub {
+  font-size: var(--sz-xs);
+  color: var(--gold);
+  margin-top: .2rem;
+}
+
+/* ── PRIVATE LESSONS ── */
+.private-section {
+  background: #09050F;
+  padding: 6rem 2.5rem;
+}
+.private-section .label { color: #CA8E28; }
+.private-section .heading { color: #F0E8DC; }
+.private-section .subhead { color: rgba(240,232,220,.5); }
+
+.private-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  margin-top: 4rem;
+  align-items: start;
+}
+.perks { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 2.5rem; }
+.perk { display: flex; gap: 1.1rem; align-items: flex-start; }
+.perk-ico { font-size: 1.25rem; flex-shrink: 0; margin-top: .1rem; }
+.perk h4 {
+  font-family: var(--font-d);
+  font-size: var(--sz-xl);
+  font-style: italic;
+  font-weight: 400;
+  color: #F0E8DC;
+  margin-bottom: .2rem;
+}
+.perk p {
+  font-size: var(--sz-sm);
+  color: rgba(240,232,220,.45);
+  line-height: 1.55;
+}
+.avail-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(240,232,220,.12);
+  border-radius: 4px;
+  padding: 2rem 2rem 2.25rem;
+}
+.avail-title {
+  font-family: var(--font-d);
+  font-size: var(--sz-xl);
+  font-style: italic;
+  color: #CA8E28;
+  margin-bottom: 1.5rem;
+}
+.avail-table { border-top: 1px solid rgba(240,232,220,.1); }
+.avail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .85rem 0;
+  border-bottom: 1px solid rgba(240,232,220,.1);
+  gap: 1rem;
+}
+.avail-day { font-size: var(--sz-sm); font-weight: 500; color: rgba(240,232,220,.85); }
+.avail-time { font-size: var(--sz-sm); color: rgba(240,232,220,.4); font-variant-numeric: tabular-nums; }
+.avail-na { font-size: var(--sz-sm); color: rgba(240,232,220,.2); font-style: italic; }
+
+.avail-note {
+  font-size: var(--sz-xs);
+  color: rgba(240,232,220,.3);
+  line-height: 1.5;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.avail-btn {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: .875rem;
+  background: var(--wine);
+  color: #F0E8DC;
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.avail-btn:hover { background: var(--wine-h); }
+
+/* ── GALLERY ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: .75rem;
+  margin-top: 3rem;
+}
+.gal-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-d);
+  font-style: italic;
+  color: var(--ink-subtle);
+  font-size: var(--sz-xl);
+}
+.gal-item:first-child  { grid-column: 1/3; grid-row: 1/2; }
+.gal-item:nth-child(5) { grid-column: 2/4; }
+
+/* ── TESTIMONIALS ── */
+.t-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.t-card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.t-quote {
+  font-family: var(--font-d);
+  font-size: var(--sz-xl);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.t-mark {
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -.6rem;
+  color: var(--wine);
+  font-style: normal;
+}
+.t-author {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.t-name {
+  font-size: var(--sz-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+.t-detail {
+  font-size: var(--sz-xs);
+  color: var(--ink-muted);
+  margin-top: .15rem;
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  margin-top: 4rem;
+  align-items: start;
+}
+.cinfo-item { margin-bottom: 2rem; }
+.cinfo-lbl {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .4rem;
+}
+.cinfo-val {
+  font-family: var(--font-d);
+  font-size: var(--sz-xl);
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.social-row { display: flex; gap: 1.25rem; margin-top: .75rem; }
+.soc-link {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-muted);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+  transition: color .2s, border-color .2s;
+}
+.soc-link:hover { color: var(--wine); border-color: var(--wine); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: .4rem; }
+.field label {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.field input,
+.field select,
+.field textarea {
+  padding: .75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: var(--font-b);
+  font-size: var(--sz-base);
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--ink-subtle); opacity: .7; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--wine); }
+.field textarea { min-height: 130px; resize: vertical; }
+
+.form-submit {
+  align-self: flex-start;
+  padding: .875rem 2.5rem;
+  background: var(--wine);
+  color: #F0E8DC;
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font-b);
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.form-submit:hover { background: var(--wine-h); }
+
+/* ── FOOTER ── */
+footer {
+  background: #09050F;
+  color: rgba(240,232,220,.4);
+  padding: 3rem 2.5rem;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.footer-brand {}
+.footer-logo {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #F0E8DC;
+  text-decoration: none;
+  display: block;
+  margin-bottom: .35rem;
+}
+.footer-tag {
+  font-size: var(--sz-xs);
+  letter-spacing: .08em;
+  color: rgba(240,232,220,.28);
+}
+.footer-nav {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: var(--sz-xs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(240,232,220,.35);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-nav a:hover { color: var(--gold); }
+.footer-copy { font-size: var(--sz-xs); color: rgba(240,232,220,.2); }
+
+/* ── FOCUS & MOTION ── */
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .private-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .classes-grid { grid-template-columns: 1fr 1fr; }
+  .t-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gal-item:first-child { grid-column: 1 / -1; }
+  .gal-item:nth-child(5) { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  section { padding: 4rem 1.25rem; }
+  .private-section { padding: 4rem 1.25rem; }
+  .nav { padding: 1.25rem 1.25rem; }
+  .nav-links:not(.open) { display: none; }
+  .nav-book { display: none; }
+  .nav-toggle { display: flex; }
+  .hero { padding: 2rem 1.25rem 4.5rem; }
+  .classes-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gal-item:first-child, .gal-item:nth-child(5) { grid-column: auto; }
+  .about-stats { gap: 1.75rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-nav { flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { text-align: left; }
+  .form-row { grid-template-columns: 1fr; }
+  .sched-header { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<!-- ════════════════════════════════════ NAVIGATION ════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Cadance&nbsp;Co.</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#private">Private Lessons</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-book">Book Now</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero" id="hero" aria-label="Welcome">
+  <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
+
+  <p class="hero-label">Cadance Company</p>
+  <h1 class="hero-title">
+    <strong>Move.</strong>
+    <strong>Feel.</strong>
+    <em class="accent">Dance.</em>
+  </h1>
+  <p class="hero-sub">
+    Judith's studio — where every style finds a home.
+    Classes, workshops, and private instruction for all levels.
+  </p>
+  <div class="hero-actions">
+    <a href="#schedule" class="btn-primary">View Schedule</a>
+    <a href="#private" class="btn-ghost">Private Lessons</a>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ════════════════════════════════════ ABOUT ════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <p class="label">The Instructor</p>
+    <h2 class="heading">Trained in rhythm,<br>rooted in passion.</h2>
+    <div class="about-grid">
+      <div class="about-photo" role="img" aria-label="Photo of Judith">
+        <span>Photo of Judith</span>
+        <small>Add your photo here</small>
+      </div>
+      <div>
+        <p class="about-body">
+          Judith has spent over a decade refining her craft across studios in New York,
+          Miami, and internationally — absorbing salsa, bachata, contemporary, and jazz
+          traditions, then bringing them back to students who are ready to discover what
+          their bodies can do.
+        </p>
+        <p class="about-body">
+          At Cadance Company, every class is a conversation between technique and joy.
+          Whether you're stepping onto a dance floor for the first time or preparing to
+          compete, Judith meets you exactly where you are — and takes you further.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-lbl">Years teaching</div>
+          </div>
+          <div>
+            <div class="stat-num">6</div>
+            <div class="stat-lbl">Dance styles</div>
+          </div>
+          <div>
+            <div class="stat-num">300+</div>
+            <div class="stat-lbl">Students taught</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ CLASSES ════════════════════════════════════ -->
+<section id="classes" class="section-alt">
+  <div class="container">
+    <p class="label">What We Offer</p>
+    <h2 class="heading">Find your style.</h2>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-icon">💃</div>
+        <div class="class-name">Salsa</div>
+        <div class="class-lvl">All Levels · Levels 1–3</div>
+        <p class="class-desc">
+          Cuban and New York–style salsa rooted in rhythm, footwork, and partner connection.
+          From first steps to complex turn patterns.
+        </p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🎶</div>
+        <div class="class-name">Bachata</div>
+        <div class="class-lvl">Beginner &amp; Intermediate</div>
+        <p class="class-desc">
+          Sensual footwork, body rolls, and the close-hold connection that makes bachata
+          one of the world's most expressive partner dances.
+        </p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🌊</div>
+        <div class="class-name">Contemporary</div>
+        <div class="class-lvl">Intermediate · Open</div>
+        <p class="class-desc">
+          Fluid technique blending ballet, modern, and improvisation — building strength,
+          spatial awareness, and artistic confidence.
+        </p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">✨</div>
+        <div class="class-name">Jazz</div>
+        <div class="class-lvl">All Levels</div>
+        <p class="class-desc">
+          Classic and theatrical jazz technique — isolations, syncopation, big stage
+          presence. Fun, fast-paced, and full of personality.
+        </p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🎤</div>
+        <div class="class-name">Hip Hop</div>
+        <div class="class-lvl">Beginner Friendly</div>
+        <p class="class-desc">
+          Foundations of street style, breaking, and freestyling. Classes focus on
+          musicality, groove, and self-expression.
+        </p>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">🎯</div>
+        <div class="class-name">Private Instruction</div>
+        <div class="class-lvl">Tailored to You</div>
+        <p class="class-desc">
+          One-on-one or small group sessions built around your goals — competition prep,
+          wedding choreography, or simply accelerating your progress.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ SCHEDULE ════════════════════════════════════ -->
+<section id="schedule">
+  <div class="container">
+    <div class="sched-header">
+      <div>
+        <p class="label">Weekly Schedule</p>
+        <h2 class="heading">Plan your week.</h2>
+      </div>
+      <div class="sched-legend">
+        <div class="leg"><span class="leg-dot" style="background:#B03060"></span>Salsa</div>
+        <div class="leg"><span class="leg-dot" style="background:#2060B0"></span>Bachata</div>
+        <div class="leg"><span class="leg-dot" style="background:#208060"></span>Contemporary</div>
+        <div class="leg"><span class="leg-dot" style="background:#A06020"></span>Jazz</div>
+        <div class="leg"><span class="leg-dot" style="background:#6020A0"></span>Hip Hop</div>
+        <div class="leg"><span class="leg-dot" style="background:#C88A28"></span>Social</div>
+      </div>
+    </div>
+    <div class="sched-wrap">
+      <div class="sched-grid">
+        <!-- Monday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Monday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="salsa">
+              <div class="sched-time">11:00 am · 60 min</div>
+              <div class="sched-name">Salsa</div>
+              <div class="sched-sub">Level 1</div>
+            </div>
+            <div class="sched-item" data-t="bachata">
+              <div class="sched-time">5:30 pm · 60 min</div>
+              <div class="sched-name">Bachata</div>
+              <div class="sched-sub">Beginner</div>
+            </div>
+            <div class="sched-item" data-t="salsa">
+              <div class="sched-time">7:00 pm · 60 min</div>
+              <div class="sched-name">Salsa</div>
+              <div class="sched-sub">Level 2</div>
+            </div>
+          </div>
+        </div>
+        <!-- Tuesday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Tuesday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="contemporary">
+              <div class="sched-time">9:00 am · 75 min</div>
+              <div class="sched-name">Contemporary</div>
+              <div class="sched-sub">Open Level</div>
+            </div>
+            <div class="sched-item" data-t="jazz">
+              <div class="sched-time">6:30 pm · 60 min</div>
+              <div class="sched-name">Jazz</div>
+              <div class="sched-sub">All Levels</div>
+            </div>
+          </div>
+        </div>
+        <!-- Wednesday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Wednesday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="hiphop">
+              <div class="sched-time">5:30 pm · 60 min</div>
+              <div class="sched-name">Hip Hop</div>
+              <div class="sched-sub">Beginner</div>
+            </div>
+            <div class="sched-item" data-t="salsa">
+              <div class="sched-time">7:00 pm · 60 min</div>
+              <div class="sched-name">Salsa</div>
+              <div class="sched-sub">Level 3</div>
+            </div>
+          </div>
+        </div>
+        <!-- Thursday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Thursday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="jazz">
+              <div class="sched-time">6:00 pm · 60 min</div>
+              <div class="sched-name">Jazz</div>
+              <div class="sched-sub">Intermediate</div>
+            </div>
+            <div class="sched-item" data-t="bachata">
+              <div class="sched-time">7:15 pm · 60 min</div>
+              <div class="sched-name">Bachata</div>
+              <div class="sched-sub">Intermediate</div>
+            </div>
+          </div>
+        </div>
+        <!-- Friday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Friday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="contemporary">
+              <div class="sched-time">5:30 pm · 75 min</div>
+              <div class="sched-name">Contemporary</div>
+              <div class="sched-sub">Open Level</div>
+            </div>
+            <div class="sched-item" data-t="social">
+              <div class="sched-time">8:00 pm · 2 hrs</div>
+              <div class="sched-name">Salsa Social</div>
+              <div class="sched-sub">All Levels</div>
+            </div>
+          </div>
+        </div>
+        <!-- Saturday -->
+        <div class="sched-col">
+          <div class="sched-col-head">Saturday</div>
+          <div class="sched-items">
+            <div class="sched-item" data-t="workshop">
+              <div class="sched-time">10:00 am · 90 min</div>
+              <div class="sched-name">Weekend Workshop</div>
+              <div class="sched-sub">Rotating topics</div>
+            </div>
+            <div class="sched-item" data-t="social">
+              <div class="sched-time">12:00 pm · Open</div>
+              <div class="sched-name">Open Practice</div>
+              <div class="sched-sub">All styles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ PRIVATE LESSONS ════════════════════════════════════ -->
+<section id="private" class="private-section">
+  <div class="container">
+    <p class="label">Private Instruction</p>
+    <h2 class="heading">Your pace.<br>Your goals.</h2>
+    <p class="subhead">
+      Private sessions are structured around what you want to achieve — whether
+      that's learning to dance for a special event, unlocking a specific technique,
+      or accelerating your progress between group classes.
+    </p>
+
+    <div class="private-grid">
+      <div>
+        <div class="perks">
+          <div class="perk">
+            <div class="perk-ico">🎯</div>
+            <div>
+              <h4>Goal-driven curriculum</h4>
+              <p>Every session is planned around your specific objectives — no filler,
+              no one-size-fits-all material.</p>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-ico">📈</div>
+            <div>
+              <h4>Faster progress</h4>
+              <p>Undivided attention means you move through material at your own speed,
+              building confidence that carries into group classes.</p>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-ico">💍</div>
+            <div>
+              <h4>Wedding choreography</h4>
+              <p>First-dance and wedding-party choreography packages available —
+              stunning results, even on a short timeline.</p>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-ico">🏆</div>
+            <div>
+              <h4>Competition preparation</h4>
+              <p>Routine development, coaching, and mock adjudications for dancers
+              preparing to compete at any level.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="avail-card">
+        <div class="avail-title">Availability for Private Lessons</div>
+        <div class="avail-table">
+          <div class="avail-row">
+            <span class="avail-day">Monday</span>
+            <span class="avail-time">1:00 pm – 5:00 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Tuesday</span>
+            <span class="avail-time">1:00 pm – 5:30 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Wednesday</span>
+            <span class="avail-time">1:00 pm – 4:30 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Thursday</span>
+            <span class="avail-time">1:00 pm – 5:00 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Friday</span>
+            <span class="avail-time">12:00 pm – 4:00 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Saturday</span>
+            <span class="avail-time">9:00 am – 12:00 pm</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Sunday</span>
+            <span class="avail-na">By request only</span>
+          </div>
+        </div>
+        <p class="avail-note">
+          Sessions are 60 or 90 minutes. Packages of 5 or 10 sessions available
+          at a discounted rate. Contact to check current availability.
+        </p>
+        <a href="#contact" class="avail-btn">Request a Session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ GALLERY ════════════════════════════════════ -->
+<section id="gallery" class="section-alt">
+  <div class="container">
+    <p class="label">Studio Life</p>
+    <h2 class="heading">In the studio.</h2>
+    <div class="gallery-grid">
+      <div class="gal-item">Wide studio shot</div>
+      <div class="gal-item">Performance</div>
+      <div class="gal-item">Class in session</div>
+      <div class="gal-item">Workshop</div>
+      <div class="gal-item">Judith teaching</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ TESTIMONIALS ════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <p class="label">Student Stories</p>
+    <h2 class="heading">What students say.</h2>
+    <div class="t-grid">
+      <div class="t-card">
+        <p class="t-quote">
+          <span class="t-mark">&ldquo;</span>I came in with two left feet and left with
+          a genuine love for salsa. Judith has a way of making everything feel achievable
+          from the very first class.
+        </p>
+        <div class="t-author">
+          <div class="t-name">Maria G.</div>
+          <div class="t-detail">Salsa Level 1 student</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">
+          <span class="t-mark">&ldquo;</span>We hired Judith for our wedding first dance
+          and she turned something terrifying into the best moment of our reception.
+          Our guests couldn't believe it.
+        </p>
+        <div class="t-author">
+          <div class="t-name">Kevin &amp; Priya L.</div>
+          <div class="t-detail">Wedding choreography clients</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">
+          <span class="t-mark">&ldquo;</span>The contemporary class is the highlight of
+          my week. Judith pushes you just enough — you walk out exhausted and completely
+          alive.
+        </p>
+        <div class="t-author">
+          <div class="t-name">Dani R.</div>
+          <div class="t-detail">Contemporary class, 2 years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ CONTACT ════════════════════════════════════ -->
+<section id="contact" class="section-alt">
+  <div class="container">
+    <p class="label">Get in Touch</p>
+    <h2 class="heading">Let's dance.</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="cinfo-item">
+          <div class="cinfo-lbl">Studio Address</div>
+          <div class="cinfo-val">123 Studio Lane<br>Your City, State 00000</div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-lbl">Email</div>
+          <div class="cinfo-val">hello@cadanceco.com</div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-lbl">Phone</div>
+          <div class="cinfo-val">(555) 000-0000</div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-lbl">Follow Along</div>
+          <div class="social-row">
+            <a href="#" class="soc-link">Instagram</a>
+            <a href="#" class="soc-link">Facebook</a>
+            <a href="#" class="soc-link">TikTok</a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">First Name</label>
+            <input id="fname" type="text" name="firstName" placeholder="Maria" required>
+          </div>
+          <div class="field">
+            <label for="lname">Last Name</label>
+            <input id="lname" type="text" name="lastName" placeholder="Garcia" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option value="">— Select a class or service —</option>
+            <option>Salsa (Group Class)</option>
+            <option>Bachata (Group Class)</option>
+            <option>Contemporary (Group Class)</option>
+            <option>Jazz (Group Class)</option>
+            <option>Hip Hop (Group Class)</option>
+            <option>Private Lessons</option>
+            <option>Wedding Choreography</option>
+            <option>Competition Prep</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" placeholder="Tell Judith a bit about your experience level and what you're hoping to work on…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <p id="formSuccess" style="display:none;color:var(--gold);font-size:var(--sz-sm);">
+          Thanks! Judith will be in touch within 24–48 hours.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">Cadance Company</a>
+      <p class="footer-tag">Every step, a story.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#private">Private</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 Cadance Company. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════ SCRIPTS ════════════════════════════════════ -->
+<script>
+// ── Sticky Nav ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('stuck', window.scrollY > 60);
+}, { passive: true });
+
+// ── Mobile Nav Toggle ──
+const toggle = document.getElementById('navToggle');
+const links  = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    links.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ── Hero Canvas — drifting particles ──
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, pts;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function mkPt() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + .4,
+      vx: (Math.random() - .5) * .25,
+      vy: -(Math.random() * .4 + .1),
+      a: Math.random(),
+      da: (Math.random() * .003 + .001) * (Math.random() < .5 ? 1 : -1),
+    };
+  }
+
+  function init() {
+    resize();
+    pts = Array.from({ length: 70 }, mkPt);
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    pts.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.a += p.da;
+      if (p.a < 0 || p.a > 1) p.da *= -1;
+      if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(180, 140, 80, ${p.a * .35})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize, { passive: true });
+
+  // Only run animation if reduced-motion is not preferred
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    init();
+    frame();
+  }
+})();
+
+// ── Contact Form ──
+function handleFormSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display = 'block';
+  e.target.reset();
+}
+</script>
