@@ -1,23 +1,28 @@
 <title>Cadance Company</title>
-<meta name="description" content="Cadance Company — Judith Marie's dance studio. Salsa On2 classes every Monday, in person &amp; online live. Private instruction, workshops, and more.">
+<meta name="description" content="Cadance Company — Judith Marie's dance studio. Salsa On2 classes every Monday, in person &amp; online live. Starting September 14th. Reserve via WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
 
 <style>
+/* ─── RESET ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
 
+/* ─── TOKENS — dark default ─── */
 :root {
-  --bg:       #080808;
-  --bg-card:  #131313;
-  --bg-raise: #1C1C1C;
-  --ink:      #FFFFFF;
-  --ink-muted:#888;
-  --ink-dim:  #555;
-  --accent:   #C72448;
-  --accent-h: #E03060;
-  --border:   #222;
-  --border-h: #333;
+  --bg:        #0E0604;
+  --bg-card:   #1C0C08;
+  --bg-raise:  #2A1510;
+  --border:    #32180E;
+
+  --ink:       #FFF2E4;
+  --ink-muted: #9A7060;
+  --ink-dim:   #5C3828;
+
+  --accent:    #D8401E;
+  --accent-h:  #EE4E28;
+  --gold:      #D49010;
 
   --font-h: 'Syne', system-ui, sans-serif;
   --font-b: 'DM Sans', system-ui, sans-serif;
@@ -29,33 +34,23 @@
   --sz-xl:   1.375rem;
   --sz-2xl:  1.875rem;
   --sz-3xl:  clamp(2.25rem, 4.5vw, 3.25rem);
-  --sz-hero: clamp(3.5rem, 9vw, 8rem);
+  --sz-hero: clamp(3.5rem, 9vw, 7.5rem);
 }
 
-/* Light-mode tokens for users who force light */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg:       #F5F5F5;
-    --bg-card:  #EBEBEB;
-    --bg-raise: #E0E0E0;
-    --ink:      #0A0A0A;
-    --ink-muted:#555;
-    --ink-dim:  #888;
-    --border:   #D8D8D8;
-    --border-h: #C8C8C8;
-  }
-}
-:root[data-theme="light"] {
-  --bg:       #F5F5F5;
-  --bg-card:  #EBEBEB;
-  --bg-raise: #E0E0E0;
-  --ink:      #0A0A0A;
-  --ink-muted:#555;
-  --ink-dim:  #888;
-  --border:   #D8D8D8;
-  --border-h: #C8C8C8;
+/* ─── LIGHT SECTION OVERRIDES ─── */
+/* Applied as a class on <section>. CSS custom props cascade through the DOM,
+   so all descendant components automatically pick up the light palette. */
+.lt {
+  --bg:        #FAF3EC;
+  --bg-card:   #F0E4D5;
+  --bg-raise:  #E4D2BC;
+  --border:    #D8C8B0;
+  --ink:       #1A0804;
+  --ink-muted: #62402E;
+  --ink-dim:   #9A7A6A;
 }
 
+/* ─── BASE ─── */
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-b);
@@ -65,8 +60,40 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+section {
+  padding: 6rem 2.5rem;
+  background: var(--bg);
+  color: var(--ink);
+}
+.container { max-width: 1100px; margin: 0 auto; }
 
-/* ── NAV ── */
+/* ─── SHARED TYPOGRAPHY ─── */
+.lbl {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .65rem;
+}
+.hdg {
+  font-family: var(--font-h);
+  font-size: var(--sz-3xl);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.07;
+  text-wrap: balance;
+  margin-bottom: 1rem;
+}
+.sub {
+  font-size: var(--sz-lg);
+  font-weight: 300;
+  color: var(--ink-muted);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+/* ─── NAV ─── */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -79,8 +106,8 @@ body {
   border-bottom: 1px solid transparent;
 }
 .nav.stuck {
-  background: #080808;
-  border-color: var(--border);
+  background: #0A0402;
+  border-bottom-color: #32180E;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -91,10 +118,9 @@ body {
   letter-spacing: .04em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
+  color: #FFF2E4;
 }
-.nav-logo span { color: var(--accent); }
-
+.nav-logo em { color: var(--accent); font-style: normal; }
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -104,23 +130,21 @@ body {
   font-size: var(--sz-sm);
   font-weight: 400;
   text-decoration: none;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,242,228,.5);
   transition: color .2s;
 }
-.nav-links a:hover { color: #fff; }
-
+.nav-links a:hover { color: #FFF2E4; }
 .nav-cta {
   font-size: var(--sz-sm);
   font-weight: 500;
   text-decoration: none;
-  padding: .55rem 1.25rem;
+  padding: .5rem 1.2rem;
   background: var(--accent);
   color: #fff;
   border-radius: 999px;
   transition: background .2s;
 }
 .nav-cta:hover { background: var(--accent-h); }
-
 .nav-toggle {
   display: none;
   background: none;
@@ -134,33 +158,31 @@ body {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: #fff;
+  background: #FFF2E4;
   transition: all .3s;
 }
-
-/* Mobile menu */
 .nav-links.open {
   display: flex !important;
   flex-direction: column;
   position: fixed;
   inset: 0;
-  background: #080808;
-  padding: 5rem 2rem 3rem;
-  gap: 1.5rem;
+  background: #0A0402;
+  padding: 5rem 2.5rem 3rem;
+  gap: 1.25rem;
   z-index: 199;
 }
 .nav-links.open a {
   font-family: var(--font-h);
   font-size: var(--sz-2xl);
   font-weight: 800;
-  color: rgba(255,255,255,.9) !important;
+  color: rgba(255,242,228,.9) !important;
   text-transform: uppercase;
 }
 
-/* ── HERO ── */
+/* ─── HERO ─── */
 .hero {
-  background: #080808;
   min-height: 100vh;
+  background: #0E0604;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,33 +192,25 @@ body {
   position: relative;
   overflow: hidden;
 }
-.hero-photo-bg {
+.hero-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #1A0A10 0%, #080808 60%);
-  opacity: .6;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 38%, rgba(216,64,30,.2) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 60% at 80% 80%, rgba(20,8,4,.9) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 20% 80%, rgba(20,8,4,.9) 0%, transparent 50%);
+  pointer-events: none;
 }
-/* Placeholder for actual photo — swap with <img> or background-image */
-.hero-photo-bg::before {
-  content: 'Add Judith\'s photo as background here';
-  position: absolute;
-  bottom: 2rem; right: 2rem;
-  font-size: var(--sz-xs);
-  color: rgba(255,255,255,.12);
-  font-family: var(--font-b);
-  letter-spacing: .06em;
-}
-
 .hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 860px;
 }
 .hero-eyebrow {
   display: inline-block;
   font-size: var(--sz-xs);
   font-weight: 500;
-  letter-spacing: .2em;
+  letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.5rem;
@@ -206,69 +220,69 @@ body {
   font-size: var(--sz-hero);
   font-weight: 800;
   line-height: .95;
-  color: #fff;
+  color: #FFF2E4;
   text-wrap: balance;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 .hero-sub {
   font-size: var(--sz-lg);
   font-weight: 300;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,242,228,.5);
   max-width: 520px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.55;
+  margin: 0 auto 2.75rem;
+  line-height: 1.65;
 }
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: .875rem;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
 }
-.btn-red {
+.btn-primary {
   display: inline-block;
   font-family: var(--font-b);
   font-size: var(--sz-sm);
   font-weight: 500;
   text-decoration: none;
-  padding: .875rem 2rem;
+  padding: .875rem 1.875rem;
   background: var(--accent);
   color: #fff;
   border-radius: 6px;
-  border: none;
   cursor: pointer;
+  border: none;
   transition: background .2s;
+  line-height: 1;
 }
-.btn-red:hover { background: var(--accent-h); }
-.btn-outline-w {
+.btn-primary:hover { background: var(--accent-h); }
+.btn-ghost-w {
   display: inline-block;
   font-family: var(--font-b);
   font-size: var(--sz-sm);
   font-weight: 500;
   text-decoration: none;
-  padding: .875rem 2rem;
+  padding: .875rem 1.875rem;
   background: transparent;
-  color: rgba(255,255,255,.8);
-  border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,242,228,.75);
+  border: 1px solid rgba(255,242,228,.2);
   border-radius: 6px;
   cursor: pointer;
-  transition: all .2s;
+  transition: border-color .2s, color .2s;
+  line-height: 1;
 }
-.btn-outline-w:hover { border-color: #fff; color: #fff; }
-
+.btn-ghost-w:hover { border-color: rgba(255,242,228,.6); color: #FFF2E4; }
 .hero-trust {
-  font-size: var(--sz-xs);
-  color: rgba(255,255,255,.3);
-  letter-spacing: .06em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: var(--sz-xs);
+  color: rgba(255,242,228,.28);
+  letter-spacing: .06em;
 }
-.hero-trust span { display: flex; align-items: center; gap: .4rem; }
-.hero-trust strong { color: rgba(255,255,255,.55); }
-
+.hero-trust strong { color: rgba(255,242,228,.6); font-weight: 500; }
+.hero-trust .sep { opacity: .4; }
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -277,7 +291,7 @@ body {
   font-size: var(--sz-xs);
   letter-spacing: .15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.2);
+  color: rgba(255,242,228,.18);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,44 +301,11 @@ body {
   content: '';
   width: 1px;
   height: 2.5rem;
-  background: linear-gradient(to bottom, rgba(255,255,255,.2), transparent);
+  background: linear-gradient(to bottom, rgba(255,242,228,.18), transparent);
 }
 
-/* ── SHARED ── */
-section { padding: 6rem 2.5rem; background: var(--bg); }
-.container { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  font-size: var(--sz-xs);
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: .6rem;
-}
-.section-heading {
-  font-family: var(--font-h);
-  font-size: var(--sz-3xl);
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.08;
-  text-wrap: balance;
-  margin-bottom: 1rem;
-}
-.section-sub {
-  font-size: var(--sz-lg);
-  font-weight: 300;
-  color: var(--ink-muted);
-  max-width: 560px;
-  line-height: 1.6;
-}
-
-/* ── WHY DANCE ── */
-.why-section {
-  background: #0A0A0A;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.why-big {
+/* ─── WHY ─── */
+.why-hdg {
   font-family: var(--font-h);
   font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 800;
@@ -332,46 +313,41 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   line-height: 1.05;
   text-wrap: balance;
   text-align: center;
-  margin-bottom: 3.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
 }
 .why-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
+  gap: 1.25rem;
 }
 .why-card {
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 2rem 2.25rem;
-  transition: background .2s;
+  transition: border-color .2s;
 }
-.why-card:hover { background: var(--bg-raise); }
+.why-card:hover { border-color: var(--accent); }
 .why-q {
   font-size: var(--sz-base);
   font-weight: 500;
-  color: var(--ink-muted);
-  margin-bottom: .75rem;
-  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: .875rem;
+  line-height: 1.45;
 }
-.why-q strong { color: var(--ink); }
 .why-a {
   display: flex;
   gap: .6rem;
   align-items: flex-start;
-  font-size: var(--sz-base);
+  font-size: var(--sz-sm);
   font-weight: 300;
-  color: var(--ink);
-  line-height: 1.55;
+  color: var(--ink-muted);
+  line-height: 1.65;
 }
-.why-arrow { color: var(--accent); font-size: 1rem; flex-shrink: 0; margin-top: .15rem; }
+.arr { color: var(--accent); flex-shrink: 0; margin-top: .1rem; }
 
-/* ── ABOUT ── */
+/* ─── ABOUT ─── */
 .about-grid {
   display: grid;
   grid-template-columns: 5fr 7fr;
@@ -381,7 +357,8 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
 .about-photo {
   aspect-ratio: 3/4;
   background: var(--bg-card);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -391,7 +368,6 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   font-size: var(--sz-sm);
   text-align: center;
   padding: 2rem;
-  border: 1px solid var(--border);
 }
 .about-photo small {
   font-size: var(--sz-xs);
@@ -400,7 +376,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   opacity: .5;
   margin-top: .25rem;
 }
-.about-heading {
+.about-hdg {
   font-family: var(--font-h);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
@@ -439,24 +415,23 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   color: var(--ink-dim);
 }
 
-/* ── CLASSES ── */
-.classes-section { background: #0A0A0A; }
+/* ─── CLASSES ─── */
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
   margin-top: 3rem;
 }
 .class-card {
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: 10px;
   padding: 2rem;
-  transition: background .2s;
+  transition: border-top-color .2s;
 }
-.class-card:hover { background: var(--bg-raise); }
+.class-card:hover { border-top-color: var(--accent); }
+.class-card.on2 { border-top-color: var(--accent); }
 .class-icon { font-size: 1.5rem; margin-bottom: .75rem; }
 .class-name {
   font-family: var(--font-h);
@@ -465,7 +440,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   color: var(--ink);
   margin-bottom: .35rem;
 }
-.class-lvl {
+.class-tag {
   font-size: var(--sz-xs);
   font-weight: 500;
   letter-spacing: .1em;
@@ -477,95 +452,35 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   font-size: var(--sz-sm);
   font-weight: 300;
   color: var(--ink-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ── SCHEDULE ── */
+/* ─── SCHEDULE ─── */
 .sched-top {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 .sched-legend {
   display: flex;
-  flex-wrap: wrap;
   gap: .6rem;
+  flex-wrap: wrap;
 }
-.leg-chip {
+.leg-badge {
   display: flex;
   align-items: center;
   gap: .4rem;
   font-size: var(--sz-xs);
   color: var(--ink-muted);
   background: var(--bg-card);
-  padding: .3rem .7rem;
+  border: 1px solid var(--border);
+  padding: .3rem .75rem;
   border-radius: 999px;
-  border: 1px solid var(--border);
 }
-.leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-
-.sched-scroll { overflow-x: auto; }
-.sched-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(160px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  min-width: 740px;
-}
-.sched-col { background: var(--bg-card); display: flex; flex-direction: column; }
-.sched-col-h {
-  padding: .75rem 1rem;
-  font-family: var(--font-h);
-  font-size: var(--sz-xs);
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  text-align: center;
-  background: var(--bg-raise);
-  color: var(--ink);
-  border-bottom: 1px solid var(--border);
-}
-.sched-items { display: flex; flex-direction: column; gap: 1px; flex: 1; background: var(--border); }
-.sched-item {
-  background: var(--bg-card);
-  padding: .9rem 1rem;
-  border-left: 3px solid transparent;
-}
-.sched-item[data-t="salsa"]        { border-color: #C72448; }
-.sched-item[data-t="bachata"]      { border-color: #2562EA; }
-.sched-item[data-t="contemporary"] { border-color: #16A34A; }
-.sched-item[data-t="jazz"]         { border-color: #D97706; }
-.sched-item[data-t="hiphop"]       { border-color: #7C3AED; }
-.sched-item[data-t="social"]       { border-color: #C72448; }
-.sched-item[data-t="workshop"]     { border-color: #0891B2; }
-
-.sched-time {
-  font-size: var(--sz-xs);
-  color: var(--ink-dim);
-  font-variant-numeric: tabular-nums;
-  margin-bottom: .15rem;
-}
-.sched-name {
-  font-family: var(--font-h);
-  font-size: var(--sz-base);
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-}
-.sched-sub {
-  font-size: var(--sz-xs);
-  color: var(--ink-muted);
-  margin-top: .2rem;
-}
-
-/* ── FEATURED CLASS CARDS (confirmed schedule) ── */
-.day-label-row {
+.day-header {
   display: flex;
   align-items: baseline;
   gap: 1rem;
@@ -574,23 +489,20 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
-.day-name-big {
+.day-name {
   font-family: var(--font-h);
   font-size: var(--sz-2xl);
   font-weight: 800;
   color: var(--ink);
 }
-.day-note {
-  font-size: var(--sz-sm);
-  color: var(--ink-dim);
-}
-.featured-classes {
+.day-note { font-size: var(--sz-sm); color: var(--ink-dim); }
+.fc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   margin-bottom: 2rem;
 }
-.featured-class {
+.fc {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
@@ -620,11 +532,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   line-height: 1.05;
   margin-bottom: .4rem;
 }
-.fc-badges {
-  display: flex;
-  gap: .5rem;
-  flex-wrap: wrap;
-}
+.badges { display: flex; gap: .5rem; flex-wrap: wrap; }
 .badge {
   font-size: var(--sz-xs);
   font-weight: 500;
@@ -632,18 +540,18 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   border-radius: 999px;
   letter-spacing: .04em;
 }
-.badge-live {
-  background: rgba(199,36,72,.12);
+.b-live {
+  background: rgba(216,64,30,.12);
   color: var(--accent);
-  border: 1px solid rgba(199,36,72,.25);
+  border: 1px solid rgba(216,64,30,.28);
 }
-.badge-live::before { content: '● '; font-size: .55rem; vertical-align: .1em; }
-.badge-ip {
-  background: rgba(255,255,255,.05);
+.b-live::before { content: '● '; font-size: .5rem; vertical-align: .18em; }
+.b-ip {
+  background: rgba(255,242,228,.05);
   color: var(--ink-muted);
   border: 1px solid var(--border);
 }
-.fc-book {
+.fc-reserve {
   display: block;
   margin-top: .75rem;
   padding-top: 1rem;
@@ -654,33 +562,19 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   border-top: 1px solid var(--border);
   transition: color .2s;
 }
-.fc-book:hover { color: var(--accent-h); }
-.sched-coming {
+.fc-reserve:hover { color: var(--accent-h); }
+.sched-note {
   font-size: var(--sz-sm);
   color: var(--ink-dim);
   text-align: center;
   padding: 1.25rem 2rem;
   background: var(--bg-card);
-  border-radius: 8px;
   border: 1px solid var(--border);
+  border-radius: 8px;
 }
-.sched-coming a { color: var(--accent); text-decoration: none; }
-.sched-coming a:hover { text-decoration: underline; }
-@media (max-width: 600px) {
-  .featured-classes { grid-template-columns: 1fr; }
-}
+.sched-note a { color: var(--accent); text-decoration: none; }
 
-/* ── PRIVATE LESSONS ── */
-.private-section { background: #0A0A0A; }
-.private-big {
-  font-family: var(--font-h);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.1;
-  text-wrap: balance;
-  margin-bottom: 1.25rem;
-}
+/* ─── PRIVATE LESSONS ─── */
 .private-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -690,7 +584,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
 }
 .perks { display: flex; flex-direction: column; gap: 2rem; }
 .perk { display: flex; gap: 1rem; }
-.perk-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: .05rem; }
+.perk-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: .1rem; }
 .perk h4 {
   font-family: var(--font-h);
   font-size: var(--sz-xl);
@@ -702,7 +596,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   font-size: var(--sz-sm);
   font-weight: 300;
   color: var(--ink-muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 .avail-card {
   background: var(--bg-card);
@@ -715,56 +609,156 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   font-size: var(--sz-xl);
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
-.avail-table { border-top: 1px solid var(--border); }
+.avail-msg {
+  font-size: var(--sz-base);
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.avail-details { margin-bottom: 1.75rem; }
 .avail-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .85rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: .75rem 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--sz-sm);
 }
-.avail-day { font-size: var(--sz-sm); font-weight: 500; color: var(--ink); }
-.avail-time { font-size: var(--sz-sm); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
-.avail-na { font-size: var(--sz-sm); color: var(--ink-dim); font-style: italic; }
+.avail-day { font-weight: 500; color: var(--ink); }
+.avail-time { color: var(--ink-muted); font-variant-numeric: tabular-nums; }
 .avail-note {
   font-size: var(--sz-xs);
   color: var(--ink-dim);
   line-height: 1.55;
-  margin-top: 1.25rem;
   margin-bottom: 1.5rem;
 }
-.avail-btn {
+.avail-cta {
   display: block;
   text-align: center;
   width: 100%;
   padding: .875rem;
-  background: var(--accent);
+  background: #25D366;
   color: #fff;
   font-size: var(--sz-sm);
   font-weight: 500;
   text-decoration: none;
   border-radius: 6px;
-  border: none;
-  cursor: pointer;
   transition: background .2s;
 }
-.avail-btn:hover { background: var(--accent-h); }
+.avail-cta:hover { background: #1EB558; }
 
-/* ── GALLERY ── */
+/* ─── PRICING ─── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+.price-card.feat {
+  border-color: var(--accent);
+  background: var(--bg-raise);
+}
+.price-tier {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.price-card.feat .price-tier { color: var(--accent); }
+.price-amt {
+  font-family: var(--font-h);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+.price-amt sup { font-size: .5em; vertical-align: .5em; }
+.price-amt .period { font-size: .42em; font-weight: 300; color: var(--ink-muted); vertical-align: .25em; }
+.price-desc {
+  font-size: var(--sz-sm);
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+.price-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-top: .25rem;
+}
+.price-list li {
+  font-size: var(--sz-sm);
+  color: var(--ink-muted);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.4;
+}
+.price-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: .75rem;
+  top: .2rem;
+}
+.price-cta {
+  display: block;
+  text-align: center;
+  padding: .8rem;
+  border-radius: 6px;
+  font-size: var(--sz-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+  background: transparent;
+  transition: all .2s;
+  margin-top: .25rem;
+}
+.price-cta:hover { border-color: var(--accent); color: var(--accent); }
+.price-card.feat .price-cta {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.price-card.feat .price-cta:hover { background: var(--accent-h); border-color: var(--accent-h); }
+.pricing-fine {
+  font-size: var(--sz-sm);
+  color: var(--ink-dim);
+  text-align: center;
+  margin-top: 2rem;
+}
+.pricing-fine a { color: var(--accent); text-decoration: none; }
+
+/* ─── GALLERY ─── */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 210px;
-  gap: .625rem;
+  grid-auto-rows: 220px;
+  gap: .75rem;
   margin-top: 3rem;
 }
 .gal-item {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -776,8 +770,131 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
 .gal-item:first-child { grid-column: 1/3; }
 .gal-item:nth-child(5) { grid-column: 2/4; }
 
-/* ── TESTIMONIALS ── */
-.t-section { background: #0A0A0A; }
+/* ─── VIDEO ─── */
+.video-wrap {
+  position: relative;
+  margin-top: 3rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 16/9;
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.play-btn {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.6rem;
+  padding-left: 5px;
+  transition: background .2s, transform .2s;
+  flex-shrink: 0;
+}
+.video-wrap:hover .play-btn { background: var(--accent-h); transform: scale(1.06); }
+.video-caption {
+  font-size: var(--sz-base);
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+.video-caption strong { color: var(--ink); font-weight: 500; }
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─── NEWSLETTER ─── */
+.nl-section {
+  padding: 5.5rem 2.5rem;
+  background: var(--accent);
+}
+.nl-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.nl-hdg {
+  font-family: var(--font-h);
+  font-size: var(--sz-3xl);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.07;
+  text-wrap: balance;
+  margin-bottom: .875rem;
+}
+.nl-sub {
+  font-size: var(--sz-lg);
+  font-weight: 300;
+  color: rgba(255,255,255,.72);
+  margin-bottom: 2.25rem;
+  line-height: 1.6;
+}
+.nl-form {
+  display: flex;
+  gap: .75rem;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nl-input {
+  flex: 1;
+  min-width: 220px;
+  padding: .875rem 1.125rem;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 6px;
+  font-family: var(--font-b);
+  font-size: var(--sz-base);
+  color: #fff;
+  outline: none;
+  transition: border-color .2s;
+}
+.nl-input::placeholder { color: rgba(255,255,255,.5); }
+.nl-input:focus { border-color: rgba(255,255,255,.85); }
+.nl-btn {
+  padding: .875rem 1.625rem;
+  background: #fff;
+  color: var(--accent);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-b);
+  font-size: var(--sz-sm);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.nl-btn:hover { background: rgba(255,255,255,.9); }
+#nlSuccess {
+  margin-top: 1rem;
+  font-size: var(--sz-sm);
+  color: rgba(255,255,255,.85);
+}
+
+/* ─── TESTIMONIALS ─── */
 .t-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -793,19 +910,57 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   flex-direction: column;
   gap: 1.25rem;
 }
-.t-stars { color: var(--accent); font-size: 1rem; letter-spacing: .1em; }
+.t-stars { color: var(--gold); font-size: 1rem; letter-spacing: .06em; }
 .t-quote {
   font-size: var(--sz-lg);
   font-weight: 300;
   color: var(--ink);
-  line-height: 1.55;
+  line-height: 1.6;
   flex: 1;
 }
 .t-attr { padding-top: 1.25rem; border-top: 1px solid var(--border); }
 .t-name { font-size: var(--sz-sm); font-weight: 500; color: var(--ink); }
 .t-detail { font-size: var(--sz-xs); color: var(--ink-dim); margin-top: .15rem; }
 
-/* ── CONTACT ── */
+/* ─── FAQ ─── */
+.faq-list { margin-top: 3rem; }
+details { border-top: 1px solid var(--border); }
+details:last-of-type { border-bottom: 1px solid var(--border); }
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.35rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: var(--sz-base);
+  font-weight: 500;
+  color: var(--ink);
+  transition: color .2s;
+  user-select: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { color: var(--accent); }
+.faq-plus {
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  color: var(--accent);
+  line-height: 1;
+  transition: transform .25s;
+  font-weight: 300;
+}
+details[open] .faq-plus { transform: rotate(45deg); }
+.faq-body {
+  padding: 0 0 1.5rem;
+  font-size: var(--sz-base);
+  font-weight: 300;
+  color: var(--ink-muted);
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+/* ─── CONTACT ─── */
 .contact-grid {
   display: grid;
   grid-template-columns: 5fr 7fr;
@@ -817,10 +972,10 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
 .cinfo-lbl {
   font-size: var(--sz-xs);
   font-weight: 500;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: .4rem;
+  margin-bottom: .45rem;
 }
 .cinfo-val {
   font-family: var(--font-h);
@@ -829,7 +984,20 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   color: var(--ink);
   line-height: 1.35;
 }
-.soc-row { display: flex; gap: 1rem; margin-top: .5rem; flex-wrap: wrap; }
+.wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--font-b);
+  font-size: var(--sz-sm);
+  font-weight: 500;
+  color: #1EB558;
+  text-decoration: none;
+  margin-top: .35rem;
+  transition: color .2s;
+}
+.wa-link:hover { color: #17A049; }
+.soc-row { display: flex; gap: .75rem; margin-top: .5rem; flex-wrap: wrap; }
 .soc-link {
   font-size: var(--sz-sm);
   font-weight: 400;
@@ -841,7 +1009,6 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   transition: all .2s;
 }
 .soc-link:hover { border-color: var(--accent); color: var(--accent); }
-
 .contact-form { display: flex; flex-direction: column; gap: 1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .field { display: flex; flex-direction: column; gap: .4rem; }
@@ -852,9 +1019,7 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   text-transform: uppercase;
   color: var(--ink-muted);
 }
-.field input,
-.field select,
-.field textarea {
+.field input, .field select, .field textarea {
   padding: .8rem 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -866,11 +1031,8 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   transition: border-color .2s;
   -webkit-appearance: none;
 }
-.field input::placeholder,
-.field textarea::placeholder { color: var(--ink-dim); }
-.field input:focus,
-.field select:focus,
-.field textarea:focus { border-color: var(--accent); }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-dim); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
 .field textarea { min-height: 130px; resize: vertical; }
 .form-submit {
   align-self: flex-start;
@@ -886,12 +1048,12 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   transition: background .2s;
 }
 .form-submit:hover { background: var(--accent-h); }
-#formSuccess { display: none; font-size: var(--sz-sm); color: var(--accent); margin-top: .25rem; }
+#formSuccess { display: none; font-size: var(--sz-sm); color: var(--accent); }
 
-/* ── FOOTER ── */
+/* ─── FOOTER ─── */
 footer {
-  background: #080808;
-  border-top: 1px solid var(--border);
+  background: #080302;
+  border-top: 1px solid #220E06;
   padding: 3rem 2.5rem;
 }
 .footer-inner {
@@ -910,54 +1072,51 @@ footer {
   letter-spacing: .04em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
+  color: rgba(255,242,228,.35);
 }
-.footer-logo span { color: var(--accent); }
-.footer-links {
-  display: flex;
-  gap: 1.75rem;
-  list-style: none;
-}
+.footer-logo em { color: var(--accent); font-style: normal; }
+.footer-links { display: flex; gap: 1.75rem; list-style: none; }
 .footer-links a {
   font-size: var(--sz-xs);
   letter-spacing: .06em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink-dim);
+  color: rgba(255,242,228,.22);
   transition: color .2s;
 }
-.footer-links a:hover { color: var(--ink); }
-.footer-copy {
-  font-size: var(--sz-xs);
-  color: var(--ink-dim);
-}
+.footer-links a:hover { color: rgba(255,242,228,.6); }
+.footer-copy { font-size: var(--sz-xs); color: rgba(255,242,228,.18); }
 
-/* ── FOCUS & MOTION ── */
+/* ─── FOCUS & MOTION ─── */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* ── RESPONSIVE ── */
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+}
 @media (max-width: 900px) {
   .about-grid    { grid-template-columns: 1fr; gap: 3rem; }
   .private-grid  { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-grid  { grid-template-columns: 1fr; gap: 3rem; }
-  .classes-grid  { grid-template-columns: 1fr 1fr; }
   .t-grid        { grid-template-columns: 1fr 1fr; }
+  .why-grid      { grid-template-columns: 1fr; }
   .gallery-grid  { grid-template-columns: 1fr 1fr; }
   .gal-item:first-child  { grid-column: 1/-1; }
   .gal-item:nth-child(5) { grid-column: auto; }
-  .why-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   section { padding: 4rem 1.25rem; }
+  .nl-section { padding: 4rem 1.25rem; }
   .nav { padding: 1.1rem 1.25rem; }
   .nav-links:not(.open) { display: none; }
   .nav-cta { display: none; }
   .nav-toggle { display: flex; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .classes-grid { grid-template-columns: 1fr; }
+  .fc-grid { grid-template-columns: 1fr; }
   .t-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .gal-item:first-child, .gal-item:nth-child(5) { grid-column: auto; }
@@ -967,83 +1126,86 @@ footer {
   .footer-links { flex-wrap: wrap; gap: 1rem; }
   .sched-top { flex-direction: column; align-items: flex-start; }
   .hero-trust { gap: .75rem; }
+  .pricing-grid { max-width: none; }
+  .nl-form { flex-direction: column; align-items: stretch; }
 }
 </style>
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">Cadance<span>.</span></a>
+  <a href="#top" class="nav-logo">Cadance<em>.</em></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#classes">Classes</a></li>
     <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#private">Private Lessons</a></li>
+    <li><a href="#private">Private</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Book a Class →</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+  <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="nav-cta">Book via WhatsApp →</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="top" aria-label="Welcome to Cadance Company">
-  <div class="hero-photo-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <span class="hero-eyebrow">Cadance Company — Dance Studio</span>
     <h1 class="hero-title">Learn to dance<br>with Judith Marie.</h1>
     <p class="hero-sub">
-      Salsa On2 classes every Monday — in person &amp; online live.
-      Private coaching and workshops available for all levels.
+      Salsa On2 classes every Monday — body movement, footwork, and
+      styling, in person and live online.
     </p>
     <div class="hero-actions">
-      <a href="#schedule" class="btn-red">View Class Schedule →</a>
-      <a href="#private" class="btn-outline-w">1-on-1 Coaching</a>
+      <a href="#schedule" class="btn-primary">View Schedule →</a>
+      <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="btn-ghost-w">Book via WhatsApp</a>
     </div>
     <div class="hero-trust">
       <span><strong>Salsa On2</strong> specialist</span>
-      <span>·</span>
-      <span><strong>In person</strong> &amp; online live</span>
-      <span>·</span>
+      <span class="sep">·</span>
+      <span>In person &amp; <strong>online live</strong></span>
+      <span class="sep">·</span>
       <span>Every <strong>Monday</strong></span>
-      <span>·</span>
+      <span class="sep">·</span>
       <span>Starting <strong>Sep 14</strong></span>
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true">Scroll</div>
 </section>
 
-<!-- ═══ WHY DANCE WITH JUDITH ═══ -->
-<section class="why-section" id="why">
+<!-- ═══ WHY ═══ -->
+<section class="lt" id="why">
   <div class="container">
-    <h2 class="why-big">Dance changes more than your body.</h2>
+    <h2 class="why-hdg">Dance changes more than your body.</h2>
     <div class="why-grid">
       <div class="why-card">
-        <p class="why-q"><strong>Never danced before?</strong> Worried you'll look ridiculous on the floor?</p>
+        <p class="why-q">Never danced before? Worried you'll look lost on the floor?</p>
         <p class="why-a">
-          <span class="why-arrow">→</span>
-          Judith's beginner classes are built for exactly this. You'll have your first real moves in a single session — without judgment, at your own pace.
+          <span class="arr">→</span>
+          Judith's classes are built for exactly this. You'll have your first real moves in a single session — without judgment, at your pace.
         </p>
       </div>
       <div class="why-card">
-        <p class="why-q"><strong>Getting married or have a performance coming up?</strong></p>
+        <p class="why-q">Already dancing salsa but can't seem to level up?</p>
         <p class="why-a">
-          <span class="why-arrow">→</span>
-          Custom choreography and event preparation packages — a first dance or full showcase number your guests will remember long after the night ends.
+          <span class="arr">→</span>
+          On2 classes dig into the why behind each move — body mechanics, musicality, and the connection between the two that most classes skip entirely.
         </p>
       </div>
       <div class="why-card">
-        <p class="why-q"><strong>Already dancing but stuck at the same level?</strong></p>
+        <p class="why-q">Want to attend social dance nights but don't feel ready?</p>
         <p class="why-a">
-          <span class="why-arrow">→</span>
-          Intermediate and advanced classes at Cadance are designed to break plateaus — deeper technique, sharper musicality, more expressive movement.
+          <span class="arr">→</span>
+          Pasos &amp; Estilo builds your repertoire fast — real footwork and partner patterns you can take to any salsa social and feel at home.
         </p>
       </div>
       <div class="why-card">
-        <p class="why-q"><strong>Want to compete or perform professionally?</strong></p>
+        <p class="why-q">Getting married, performing, or competing?</p>
         <p class="why-a">
-          <span class="why-arrow">→</span>
-          Competition prep and performance coaching with real adjudication feedback. Judith has taken dancers from studio to stage — she can take you there too.
+          <span class="arr">→</span>
+          Private coaching and choreography packages tailored to your event — Judith has taken dancers from first class to the stage.
         </p>
       </div>
     </div>
@@ -1060,17 +1222,18 @@ footer {
         <small>Replace with &lt;img&gt; tag</small>
       </div>
       <div>
-        <p class="section-label">Who I Am</p>
-        <h2 class="about-heading">A dancer who loves to teach.</h2>
+        <p class="lbl">Who I Am</p>
+        <h2 class="about-hdg">A dancer who loves to teach.</h2>
         <p class="about-body">
-          Judith Marie is a Salsa On2 specialist with years of training, competing,
-          and teaching experience. Her approach to body movement and musicality has
-          shaped the way her students connect with the music from day one.
+          Judith Marie is a Salsa On2 specialist — trained in body mechanics,
+          musicality, and the partner dynamics that make On2 one of the most
+          expressive forms of social dance in the world. Her teaching breaks down
+          complex movement into things you can actually feel and apply.
         </p>
         <p class="about-body">
-          At Cadance Company, technique and joy aren't opposites. Every class is specific,
-          energizing, and designed to give you real progress you can feel — not in six months,
-          but this week.
+          At Cadance Company, technique and joy aren't opposites. Every class is
+          specific, energizing, and designed to give you real progress you can feel
+          — not in six months, but this week.
         </p>
         <div class="about-stats">
           <div>
@@ -1078,12 +1241,12 @@ footer {
             <div class="stat-l">Years teaching</div>
           </div>
           <div>
-            <div class="stat-n">6</div>
-            <div class="stat-l">Dance styles</div>
-          </div>
-          <div>
             <div class="stat-n">300+</div>
             <div class="stat-l">Students taught</div>
+          </div>
+          <div>
+            <div class="stat-n">On2</div>
+            <div class="stat-l">Specialist</div>
           </div>
         </div>
       </div>
@@ -1092,34 +1255,35 @@ footer {
 </section>
 
 <!-- ═══ CLASSES ═══ -->
-<section id="classes" class="classes-section">
+<section class="lt" id="classes">
   <div class="container">
-    <p class="section-label">What We Offer</p>
-    <h2 class="section-heading">Salsa On2 — inside and out.</h2>
+    <p class="lbl">What We Offer</p>
+    <h2 class="hdg">Salsa On2 — inside and out.</h2>
+    <p class="sub">Two complementary classes every Monday. Take one or both — they're designed to build on each other.</p>
     <div class="classes-grid">
-      <div class="class-card" style="border-color:var(--accent)">
+      <div class="class-card on2">
         <div class="class-icon">💃</div>
         <div class="class-name">Body Movement</div>
-        <div class="class-lvl">Salsa On2 · All Levels</div>
-        <p class="class-desc">Isolations, ribcage control, and the full-body expression that makes Salsa On2 feel alive. Learn how to move with the music, not just to it.</p>
+        <div class="class-tag">Salsa On2 · All Levels · 8:30 pm</div>
+        <p class="class-desc">Isolations, ribcage control, and the full-body expression that makes Salsa On2 feel alive. This is where the music goes from something you hear to something you feel in every part of your body.</p>
       </div>
-      <div class="class-card" style="border-color:var(--accent)">
+      <div class="class-card on2">
         <div class="class-icon">🔥</div>
         <div class="class-name">Pasos &amp; Estilo</div>
-        <div class="class-lvl">Salsa On2 · All Levels</div>
-        <p class="class-desc">Footwork, turn patterns, and the individual styling details — arms, hands, timing — that define your personal voice on the dance floor.</p>
+        <div class="class-tag">Salsa On2 · All Levels · 9:30 pm</div>
+        <p class="class-desc">Footwork, turn patterns, and the individual styling details — arms, timing, presence — that define your personal voice on the dance floor. Real moves you can use at any salsa social.</p>
       </div>
       <div class="class-card">
         <div class="class-icon">🎶</div>
         <div class="class-name">Bachata</div>
-        <div class="class-lvl">Coming Soon</div>
-        <p class="class-desc">Body movement, close-hold technique, and the musical phrasing that makes bachata one of the world's most emotionally resonant partner dances.</p>
+        <div class="class-tag">Coming Soon</div>
+        <p class="class-desc">Body movement, close-hold technique, and the musical phrasing that makes bachata one of the world's most emotionally resonant partner dances. More dates coming — join the waitlist to get notified.</p>
       </div>
       <div class="class-card">
         <div class="class-icon">🎯</div>
         <div class="class-name">Private Lessons</div>
-        <div class="class-lvl">Tailored to You</div>
-        <p class="class-desc">One-on-one sessions built entirely around your goals — competition prep, wedding choreography, or fast-tracking your personal technique.</p>
+        <div class="class-tag">One-on-One · Available Now</div>
+        <p class="class-desc">Sessions built entirely around your goals — competition prep, wedding choreography, accelerated technique, or anything else. Judith works around you, not a fixed curriculum.</p>
       </div>
     </div>
   </div>
@@ -1130,111 +1294,161 @@ footer {
   <div class="container">
     <div class="sched-top">
       <div>
-        <p class="section-label">Weekly Schedule</p>
-        <h2 class="section-heading">Starting September 14th.</h2>
-        <p class="section-sub">Every Monday — in person at the studio and live online.</p>
+        <p class="lbl">Weekly Schedule</p>
+        <h2 class="hdg">Starting September 14th.</h2>
+        <p class="sub">Every Monday — in person at the studio and live online.</p>
       </div>
       <div class="sched-legend">
-        <div class="leg-chip"><span class="badge-live badge" style="font-size:.7rem">Online Live</span></div>
-        <div class="leg-chip"><span class="badge-ip badge" style="font-size:.7rem">In Person</span></div>
+        <div class="leg-badge"><span class="b-live badge" style="font-size:.7rem">Online Live</span></div>
+        <div class="leg-badge"><span class="b-ip badge" style="font-size:.7rem">In Person</span></div>
       </div>
     </div>
-
-    <div class="day-label-row">
-      <span class="day-name-big">Monday</span>
+    <div class="day-header">
+      <span class="day-name">Monday</span>
       <span class="day-note">Every week · Reserve via WhatsApp</span>
     </div>
-
-    <div class="featured-classes">
-      <div class="featured-class">
+    <div class="fc-grid">
+      <div class="fc">
         <div class="fc-time">8:30 pm – 9:30 pm · 60 min</div>
         <div class="fc-style">Salsa On2</div>
         <div class="fc-name">Body<br>Movement</div>
-        <div class="fc-badges">
-          <span class="badge badge-live">Online Live</span>
-          <span class="badge badge-ip">In Person</span>
+        <div class="badges">
+          <span class="badge b-live">Online Live</span>
+          <span class="badge b-ip">In Person</span>
         </div>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-book">Reserve via WhatsApp →</a>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-reserve">Reserve via WhatsApp →</a>
       </div>
-      <div class="featured-class">
+      <div class="fc">
         <div class="fc-time">9:30 pm – 10:30 pm · 60 min</div>
         <div class="fc-style">Salsa On2</div>
         <div class="fc-name">Pasos &amp;<br>Estilo</div>
-        <div class="fc-badges">
-          <span class="badge badge-live">Online Live</span>
-          <span class="badge badge-ip">In Person</span>
+        <div class="badges">
+          <span class="badge b-live">Online Live</span>
+          <span class="badge b-ip">In Person</span>
         </div>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-book">Reserve via WhatsApp →</a>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-reserve">Reserve via WhatsApp →</a>
       </div>
     </div>
-
-    <p class="sched-coming">More days and class styles coming soon — <a href="#contact">get notified</a>.</p>
+    <p class="sched-note">More days and styles coming soon — <a href="#newsletter">get notified</a>.</p>
   </div>
 </section>
 
 <!-- ═══ PRIVATE LESSONS ═══ -->
-<section id="private" class="private-section">
+<section class="lt" id="private">
   <div class="container">
-    <p class="section-label">1-on-1 Coaching</p>
-    <h2 class="private-big">Your pace.<br>Your goals.</h2>
-    <p class="section-sub">
-      Private sessions are built entirely around what you want to achieve — faster progress,
-      specific technique, or choreography for an event.
-    </p>
+    <p class="lbl">1-on-1 Coaching</p>
+    <h2 class="hdg">Your pace.<br>Your goals.</h2>
+    <p class="sub">Private sessions move entirely at your speed — deeper technique, event-specific choreography, or fast-tracking your progress.</p>
     <div class="private-grid">
       <div class="perks">
         <div class="perk">
           <div class="perk-icon">🎯</div>
           <div>
             <h4>Goal-driven sessions</h4>
-            <p>Every session is planned around your specific objectives — no filler, no one-size-fits-all material.</p>
+            <p>Every session is built around what you specifically want — no filler, no shared agenda, no one-size-fits-all material.</p>
           </div>
         </div>
         <div class="perk">
           <div class="perk-icon">📈</div>
           <div>
             <h4>Faster progress</h4>
-            <p>Undivided attention means you move through material at your own speed, building confidence that carries into group classes.</p>
+            <p>Undivided attention means you move through material at your own speed, building confidence that carries into every group class.</p>
           </div>
         </div>
         <div class="perk">
           <div class="perk-icon">💍</div>
           <div>
             <h4>Wedding choreography</h4>
-            <p>First-dance and wedding-party packages — stunning choreography your guests will talk about, even on a short timeline.</p>
+            <p>First-dance and wedding-party packages — a routine your guests will remember, ready even on a short timeline.</p>
           </div>
         </div>
         <div class="perk">
           <div class="perk-icon">🏆</div>
           <div>
             <h4>Competition prep</h4>
-            <p>Routine development, coaching, and mock adjudications for dancers preparing to compete at any level.</p>
+            <p>Routine development, coaching, and real adjudication feedback for dancers preparing to compete at any level.</p>
           </div>
         </div>
       </div>
       <div class="avail-card">
         <div class="avail-title">Private Lesson Availability</div>
-        <div class="avail-table">
-          <div class="avail-row"><span class="avail-day">Monday</span><span class="avail-time">1:00 pm – 5:00 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Tuesday</span><span class="avail-time">1:00 pm – 5:30 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Wednesday</span><span class="avail-time">1:00 pm – 4:30 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Thursday</span><span class="avail-time">1:00 pm – 5:00 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Friday</span><span class="avail-time">12:00 pm – 4:00 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Saturday</span><span class="avail-time">9:00 am – 12:00 pm</span></div>
-          <div class="avail-row"><span class="avail-day">Sunday</span><span class="avail-na">By request only</span></div>
+        <p class="avail-msg">
+          Judith's private schedule is booked directly by WhatsApp.
+          Message to check current availability and reserve your session.
+        </p>
+        <div class="avail-details">
+          <div class="avail-row">
+            <span class="avail-day">Session length</span>
+            <span class="avail-time">60 or 90 minutes</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Format</span>
+            <span class="avail-time">In person or online</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Packages</span>
+            <span class="avail-time">5 &amp; 10-session bundles</span>
+          </div>
         </div>
-        <p class="avail-note">Sessions are 60 or 90 minutes. Packages of 5 or 10 sessions available at a discounted rate.</p>
-        <a href="#contact" class="avail-btn">Request a Session →</a>
+        <p class="avail-note">Packages available at a discounted rate. Ask about current availability and pricing via WhatsApp.</p>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="avail-cta">Book via WhatsApp →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ GALLERY ═══ -->
-<section id="gallery">
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
   <div class="container">
-    <p class="section-label">Studio Life</p>
-    <h2 class="section-heading">In the studio.</h2>
+    <p class="lbl">Simple Pricing</p>
+    <h2 class="hdg">Pick what works for you.</h2>
+    <p class="sub">Drop in to try it out, or commit to a monthly rhythm. Private sessions booked separately.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Drop-In</div>
+        <div class="price-amt"><sup>$</sup>25<span class="period"> / class</span></div>
+        <p class="price-desc">Perfect for trying a class or dropping in when you're in town. No commitment.</p>
+        <ul class="price-list">
+          <li>One class of your choice</li>
+          <li>In person or online live</li>
+          <li>No signup required</li>
+        </ul>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Reserve →</a>
+      </div>
+      <div class="price-card feat">
+        <div class="price-tier">Monthly Pass</div>
+        <div class="price-amt"><sup>$</sup>85<span class="period"> / month</span></div>
+        <p class="price-desc">Four classes a month. The best way to build real progress consistently.</p>
+        <ul class="price-list">
+          <li>4 classes per month</li>
+          <li>Mix Body Movement &amp; Pasos</li>
+          <li>In person or online live</li>
+          <li>Priority reservations</li>
+        </ul>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Get Started →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Private Lesson</div>
+        <div class="price-amt"><sup>$</sup>90<span class="period"> / session</span></div>
+        <p class="price-desc">One-on-one coaching — your goals, your pace, fully personalized.</p>
+        <ul class="price-list">
+          <li>60-minute session</li>
+          <li>In person or online</li>
+          <li>Goal-specific curriculum</li>
+          <li>5-session bundle: $400</li>
+        </ul>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Book a Session →</a>
+      </div>
+    </div>
+    <p class="pricing-fine">Prices are starting rates — <a href="https://wa.me/18013884572" target="_blank" rel="noopener">message Judith</a> for current rates and package details.</p>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="lt" id="gallery">
+  <div class="container">
+    <p class="lbl">Studio Life</p>
+    <h2 class="hdg">In the studio.</h2>
     <div class="gallery-grid">
       <div class="gal-item">Wide studio shot — replace with photo</div>
       <div class="gal-item">Performance shot</div>
@@ -1245,69 +1459,147 @@ footer {
   </div>
 </section>
 
-<!-- ═══ TESTIMONIALS ═══ -->
-<section id="testimonials" class="t-section">
+<!-- ═══ VIDEO ═══ -->
+<!-- Set data-yt to your YouTube video ID (e.g. data-yt="dQw4w9WgXcQ") to enable playback -->
+<section id="video">
   <div class="container">
-    <p class="section-label">Student Stories</p>
-    <h2 class="section-heading">What students say.</h2>
+    <p class="lbl">Watch &amp; Learn</p>
+    <h2 class="hdg">See Judith teach.</h2>
+    <p class="sub">Body mechanics, musicality, and expression — see what a Cadance class actually looks like.</p>
+    <div class="video-wrap" id="videoWrap" data-yt="" role="button" tabindex="0" aria-label="Play video">
+      <div class="video-thumb" id="videoThumb">
+        <div class="play-btn" aria-hidden="true">▶</div>
+        <p class="video-caption"><strong>Cadance Company</strong><br>Salsa On2 with Judith Marie — coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<section class="nl-section" id="newsletter">
+  <div class="nl-inner">
+    <h2 class="nl-hdg">Be first to know.</h2>
+    <p class="nl-sub">New classes, workshops, and announcements — straight to your inbox. No spam, just dance.</p>
+    <form class="nl-form" onsubmit="handleNL(event)">
+      <input class="nl-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+      <button class="nl-btn" type="submit">Notify me →</button>
+    </form>
+    <p id="nlSuccess" hidden>You're on the list! Judith will be in touch.</p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="lt" id="testimonials">
+  <div class="container">
+    <p class="lbl">Student Stories</p>
+    <h2 class="hdg">What students say.</h2>
     <div class="t-grid">
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-quote">
-          "I came in with two left feet and left with a genuine love for salsa.
-          Judith has a way of making everything feel achievable from the very first class."
+          "I had never danced in my life and Judith had me moving On2 within the first hour. Her Body Movement class broke down exactly why my body wasn't connecting to the music — now it does."
         </p>
         <div class="t-attr">
-          <div class="t-name">Maria G.</div>
-          <div class="t-detail">Salsa Level 1 student</div>
+          <div class="t-name">Sofia R.</div>
+          <div class="t-detail">Body Movement — 3 months</div>
         </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-quote">
-          "We hired Judith for our wedding first dance and she turned something
-          terrifying into the best moment of our reception. Our guests couldn't believe it."
+          "The Pasos &amp; Estilo class is completely different from anything I'd taken before. Judith teaches you the why behind every turn pattern. Three months in, my salsa went from okay to actually good."
         </p>
         <div class="t-attr">
-          <div class="t-name">Kevin &amp; Priya L.</div>
-          <div class="t-detail">Wedding choreography clients</div>
+          <div class="t-name">Marcus T.</div>
+          <div class="t-detail">Pasos &amp; Estilo student</div>
         </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-quote">
-          "The contemporary class is the highlight of my week. Judith pushes you
-          just enough — you walk out exhausted and completely alive."
+          "I took private lessons with Judith before a wedding where I had to dance in front of everyone. She had me ready in three sessions. Someone asked if I was a professional — I'd been dancing for three weeks."
         </p>
         <div class="t-attr">
-          <div class="t-name">Dani R.</div>
-          <div class="t-detail">Contemporary class, 2 years</div>
+          <div class="t-name">Carmen L.</div>
+          <div class="t-detail">Private lessons client</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
-<section id="contact">
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
   <div class="container">
-    <p class="section-label">Get in Touch</p>
-    <h2 class="section-heading">Let's get you dancing.</h2>
+    <p class="lbl">Common Questions</p>
+    <h2 class="hdg">Answers before you ask.</h2>
+    <div class="faq-list">
+
+      <details>
+        <summary>Do I need dance experience to join?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">No experience needed. Both Body Movement and Pasos &amp; Estilo are open to all levels — Judith teaches from first principles, so beginners get a real foundation and experienced dancers get technique they've been missing.</p>
+      </details>
+
+      <details>
+        <summary>What does "On2" mean?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Salsa On2 (also called New York style or Mambo) means the main break step lands on beat 2 of the music, rather than beat 1. It syncs more closely with the clave rhythm and conga patterns in the music, which gives the dance a distinct feel — smoother, more musical, and deeply connected to how the instruments phrase. If you've only danced On1 before, you'll notice the difference immediately.</p>
+      </details>
+
+      <details>
+        <summary>What's the difference between Body Movement and Pasos &amp; Estilo?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Body Movement is about how you use your body — isolations, ribcage movement, hip action, and musicality. You'll work on connecting each part of your body to the rhythm. Pasos &amp; Estilo focuses on footwork patterns, turn sequences, and individual styling like arms and hand lines. They're designed to complement each other — many students take both the same night.</p>
+      </details>
+
+      <details>
+        <summary>How does the online live class work?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">You join the class via a live video link at the same time as the in-person class. Judith teaches to both groups simultaneously and gives feedback on camera when she can. You'll need enough space to move freely, something to watch on (laptop, tablet, or TV), and a decent internet connection. The link is sent after you reserve via WhatsApp.</p>
+      </details>
+
+      <details>
+        <summary>What should I wear?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Comfortable clothes you can move in. For footwear, anything with a smooth sole works — avoid thick rubber soles like sneakers, which grip the floor and make turning difficult. Dance shoes are great if you have them; leather-soled shoes or socks on a smooth floor work too. Don't overthink it for your first class.</p>
+      </details>
+
+      <details>
+        <summary>How do I reserve my spot?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Message Judith via WhatsApp at <a href="https://wa.me/18013884572" style="color:var(--accent);text-decoration:none">+1 801 388 4572</a>. Tell her which class (Body Movement, Pasos &amp; Estilo, or both) and whether you're joining in person or online. She'll confirm your spot and send you any details you need.</p>
+      </details>
+
+      <details>
+        <summary>Can I join if classes have already started?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Yes. Both classes are designed so you can drop in at any point — Judith structures each session to be accessible whether it's your first class or your twentieth. Just message to reserve your spot before coming.</p>
+      </details>
+
+      <details>
+        <summary>Are private lessons available online?<span class="faq-plus" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Yes, private lessons are available online via video call. For technique-focused work, online sessions are just as effective as in person. For choreography or partner work, in-person is usually preferred — but Judith can discuss what format makes the most sense for your goals.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="lt" id="contact">
+  <div class="container">
+    <p class="lbl">Get in Touch</p>
+    <h2 class="hdg">Let's get you dancing.</h2>
     <div class="contact-grid">
       <div>
         <div class="cinfo-item">
-          <div class="cinfo-lbl">Studio Address</div>
-          <div class="cinfo-val">123 Studio Lane<br>Your City, State 00000</div>
-        </div>
-        <div class="cinfo-item">
-          <div class="cinfo-lbl">Email</div>
-          <div class="cinfo-val">hello@cadanceco.com</div>
+          <div class="cinfo-lbl">Studio</div>
+          <div class="cinfo-val">Location coming soon<br><span style="font-size:var(--sz-sm);font-weight:300;color:var(--ink-muted)">In person &amp; online — ask via WhatsApp</span></div>
         </div>
         <div class="cinfo-item">
           <div class="cinfo-lbl">WhatsApp / Phone</div>
-          <div class="cinfo-val">
-            <a href="https://wa.me/18013884572" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:500">+1 801 388 4572 — Book via WhatsApp →</a>
-          </div>
+          <div class="cinfo-val">+1 801 388 4572</div>
+          <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="wa-link">
+            ↗ Open WhatsApp to book
+          </a>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-lbl">Email</div>
+          <div class="cinfo-val" style="font-size:var(--sz-base);font-weight:400">hello@cadanceco.com</div>
         </div>
         <div class="cinfo-item">
           <div class="cinfo-lbl">Follow Along</div>
@@ -1336,8 +1628,8 @@ footer {
           <label for="interest">I'm interested in</label>
           <select id="interest" name="interest">
             <option value="">— Select —</option>
-            <option>Body Movement (Salsa On2 — Monday 8:30 pm)</option>
-            <option>Pasos &amp; Estilo (Salsa On2 — Monday 9:30 pm)</option>
+            <option>Body Movement (Salsa On2 — Mon 8:30 pm)</option>
+            <option>Pasos &amp; Estilo (Salsa On2 — Mon 9:30 pm)</option>
             <option>Both Monday classes</option>
             <option>Private Lessons</option>
             <option>Wedding Choreography</option>
@@ -1347,7 +1639,7 @@ footer {
         </div>
         <div class="field">
           <label for="msg">Message</label>
-          <textarea id="msg" name="message" placeholder="Tell Judith a bit about your experience level and what you're hoping to work on…"></textarea>
+          <textarea id="msg" name="message" placeholder="Tell Judith about your experience level and what you're hoping to work on…"></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
         <p id="formSuccess">Thanks! Judith will be in touch within 24–48 hours.</p>
@@ -1359,15 +1651,17 @@ footer {
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
-    <a href="#top" class="footer-logo">Cadance<span>.</span></a>
+    <a href="#top" class="footer-logo">Cadance<em>.</em></a>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#private">Private</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2025 Cadance Company</p>
+    <p class="footer-copy">&copy; 2026 Cadance Company</p>
   </div>
 </footer>
 
@@ -1376,10 +1670,10 @@ footer {
 // Sticky nav
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('stuck', window.scrollY > 70);
+  nav.classList.toggle('stuck', window.scrollY > 60);
 }, { passive: true });
 
-// Mobile nav
+// Mobile nav toggle
 const toggle = document.getElementById('navToggle');
 const links  = document.getElementById('navLinks');
 toggle.addEventListener('click', () => {
@@ -1393,6 +1687,31 @@ links.querySelectorAll('a').forEach(a => {
     document.body.style.overflow = '';
   });
 });
+
+// Video embed (replace YOUTUBE_VIDEO_ID in data-yt to enable)
+(function () {
+  const wrap = document.getElementById('videoWrap');
+  if (!wrap) return;
+  function activate() {
+    const id = wrap.dataset.yt;
+    if (!id) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.allowFullscreen = true;
+    wrap.innerHTML = '';
+    wrap.appendChild(iframe);
+  }
+  wrap.addEventListener('click', activate);
+  wrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+})();
+
+// Newsletter form
+function handleNL(e) {
+  e.preventDefault();
+  document.getElementById('nlSuccess').hidden = false;
+  e.target.reset();
+}
 
 // Contact form
 function handleSubmit(e) {
