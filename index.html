@@ -1,5 +1,5 @@
 <title>Cadance Company</title>
-<meta name="description" content="Cadance Company — Judith's dance studio. In-person classes, workshops, and private instruction in salsa, bachata, contemporary, jazz, and hip hop.">
+<meta name="description" content="Cadance Company — Judith Marie's dance studio. Salsa On2 classes every Monday, in person &amp; online live. Private instruction, workshops, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
@@ -564,6 +564,112 @@ section { padding: 6rem 2.5rem; background: var(--bg); }
   margin-top: .2rem;
 }
 
+/* ── FEATURED CLASS CARDS (confirmed schedule) ── */
+.day-label-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.day-name-big {
+  font-family: var(--font-h);
+  font-size: var(--sz-2xl);
+  font-weight: 800;
+  color: var(--ink);
+}
+.day-note {
+  font-size: var(--sz-sm);
+  color: var(--ink-dim);
+}
+.featured-classes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.featured-class {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.fc-time {
+  font-size: var(--sz-sm);
+  color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
+}
+.fc-style {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.fc-name {
+  font-family: var(--font-h);
+  font-size: var(--sz-3xl);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-bottom: .4rem;
+}
+.fc-badges {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: var(--sz-xs);
+  font-weight: 500;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  letter-spacing: .04em;
+}
+.badge-live {
+  background: rgba(199,36,72,.12);
+  color: var(--accent);
+  border: 1px solid rgba(199,36,72,.25);
+}
+.badge-live::before { content: '● '; font-size: .55rem; vertical-align: .1em; }
+.badge-ip {
+  background: rgba(255,255,255,.05);
+  color: var(--ink-muted);
+  border: 1px solid var(--border);
+}
+.fc-book {
+  display: block;
+  margin-top: .75rem;
+  padding-top: 1rem;
+  font-size: var(--sz-sm);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+  transition: color .2s;
+}
+.fc-book:hover { color: var(--accent-h); }
+.sched-coming {
+  font-size: var(--sz-sm);
+  color: var(--ink-dim);
+  text-align: center;
+  padding: 1.25rem 2rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.sched-coming a { color: var(--accent); text-decoration: none; }
+.sched-coming a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .featured-classes { grid-template-columns: 1fr; }
+}
+
 /* ── PRIVATE LESSONS ── */
 .private-section { background: #0A0A0A; }
 .private-big {
@@ -885,23 +991,23 @@ footer {
   <div class="hero-photo-bg" aria-hidden="true"></div>
   <div class="hero-inner">
     <span class="hero-eyebrow">Cadance Company — Dance Studio</span>
-    <h1 class="hero-title">Learn to dance<br>with Judith.</h1>
+    <h1 class="hero-title">Learn to dance<br>with Judith Marie.</h1>
     <p class="hero-sub">
-      In-person classes, private coaching, and workshop events
-      for every level — beginner to advanced.
+      Salsa On2 classes every Monday — in person &amp; online live.
+      Private coaching and workshops available for all levels.
     </p>
     <div class="hero-actions">
       <a href="#schedule" class="btn-red">View Class Schedule →</a>
       <a href="#private" class="btn-outline-w">1-on-1 Coaching</a>
     </div>
     <div class="hero-trust">
-      <span><strong>6</strong> dance styles</span>
+      <span><strong>Salsa On2</strong> specialist</span>
       <span>·</span>
-      <span><strong>In-person</strong> studio</span>
+      <span><strong>In person</strong> &amp; online live</span>
       <span>·</span>
-      <span><strong>All</strong> levels welcome</span>
+      <span>Every <strong>Monday</strong></span>
       <span>·</span>
-      <span>Private coaching <strong>available</strong></span>
+      <span>Starting <strong>Sep 14</strong></span>
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true">Scroll</div>
@@ -948,18 +1054,18 @@ footer {
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-photo" role="img" aria-label="Photo of Judith">
+      <div class="about-photo" role="img" aria-label="Photo of Judith Marie">
         <span>📸</span>
-        <span>Judith's photo<br>goes here</span>
+        <span>Judith Marie's photo<br>goes here</span>
         <small>Replace with &lt;img&gt; tag</small>
       </div>
       <div>
         <p class="section-label">Who I Am</p>
         <h2 class="about-heading">A dancer who loves to teach.</h2>
         <p class="about-body">
-          Judith has spent over a decade training, competing, and teaching across
-          New York, Miami, and internationally — absorbing salsa, bachata, contemporary,
-          and jazz at their source, then bringing that knowledge back to every class she teaches.
+          Judith Marie is a Salsa On2 specialist with years of training, competing,
+          and teaching experience. Her approach to body movement and musicality has
+          shaped the way her students connect with the music from day one.
         </p>
         <p class="about-body">
           At Cadance Company, technique and joy aren't opposites. Every class is specific,
@@ -989,43 +1095,31 @@ footer {
 <section id="classes" class="classes-section">
   <div class="container">
     <p class="section-label">What We Offer</p>
-    <h2 class="section-heading">Six styles. One studio.</h2>
+    <h2 class="section-heading">Salsa On2 — inside and out.</h2>
     <div class="classes-grid">
-      <div class="class-card">
+      <div class="class-card" style="border-color:var(--accent)">
         <div class="class-icon">💃</div>
-        <div class="class-name">Salsa</div>
-        <div class="class-lvl">Levels 1 – 3</div>
-        <p class="class-desc">Cuban and New York–style salsa — footwork, timing, partner connection, and turn patterns. Structured from first steps to advanced combinations.</p>
+        <div class="class-name">Body Movement</div>
+        <div class="class-lvl">Salsa On2 · All Levels</div>
+        <p class="class-desc">Isolations, ribcage control, and the full-body expression that makes Salsa On2 feel alive. Learn how to move with the music, not just to it.</p>
+      </div>
+      <div class="class-card" style="border-color:var(--accent)">
+        <div class="class-icon">🔥</div>
+        <div class="class-name">Pasos &amp; Estilo</div>
+        <div class="class-lvl">Salsa On2 · All Levels</div>
+        <p class="class-desc">Footwork, turn patterns, and the individual styling details — arms, hands, timing — that define your personal voice on the dance floor.</p>
       </div>
       <div class="class-card">
         <div class="class-icon">🎶</div>
         <div class="class-name">Bachata</div>
-        <div class="class-lvl">Beginner &amp; Intermediate</div>
+        <div class="class-lvl">Coming Soon</div>
         <p class="class-desc">Body movement, close-hold technique, and the musical phrasing that makes bachata one of the world's most emotionally resonant partner dances.</p>
-      </div>
-      <div class="class-card">
-        <div class="class-icon">🌊</div>
-        <div class="class-name">Contemporary</div>
-        <div class="class-lvl">Open Level</div>
-        <p class="class-desc">Fluid, expressive movement combining ballet, modern, and improvisation. Builds full-body strength and a deeper relationship with space and music.</p>
-      </div>
-      <div class="class-card">
-        <div class="class-icon">✨</div>
-        <div class="class-name">Jazz</div>
-        <div class="class-lvl">All Levels</div>
-        <p class="class-desc">Classic and contemporary jazz technique — isolations, syncopation, stage presence. Fast-paced, musical, and endlessly satisfying to get right.</p>
-      </div>
-      <div class="class-card">
-        <div class="class-icon">🎤</div>
-        <div class="class-name">Hip Hop</div>
-        <div class="class-lvl">Beginner Friendly</div>
-        <p class="class-desc">Street style foundations — groove, isolation, and freestyling. Classes focus on musicality and self-expression over memorized choreography.</p>
       </div>
       <div class="class-card">
         <div class="class-icon">🎯</div>
         <div class="class-name">Private Lessons</div>
         <div class="class-lvl">Tailored to You</div>
-        <p class="class-desc">One-on-one or small group sessions built entirely around your goals — competition prep, wedding choreography, or fast-tracking your progress.</p>
+        <p class="class-desc">One-on-one sessions built entirely around your goals — competition prep, wedding choreography, or fast-tracking your personal technique.</p>
       </div>
     </div>
   </div>
@@ -1037,121 +1131,44 @@ footer {
     <div class="sched-top">
       <div>
         <p class="section-label">Weekly Schedule</p>
-        <h2 class="section-heading">Plan your week.</h2>
+        <h2 class="section-heading">Starting September 14th.</h2>
+        <p class="section-sub">Every Monday — in person at the studio and live online.</p>
       </div>
       <div class="sched-legend">
-        <div class="leg-chip"><span class="leg-dot" style="background:#C72448"></span>Salsa</div>
-        <div class="leg-chip"><span class="leg-dot" style="background:#2562EA"></span>Bachata</div>
-        <div class="leg-chip"><span class="leg-dot" style="background:#16A34A"></span>Contemporary</div>
-        <div class="leg-chip"><span class="leg-dot" style="background:#D97706"></span>Jazz</div>
-        <div class="leg-chip"><span class="leg-dot" style="background:#7C3AED"></span>Hip Hop</div>
+        <div class="leg-chip"><span class="badge-live badge" style="font-size:.7rem">Online Live</span></div>
+        <div class="leg-chip"><span class="badge-ip badge" style="font-size:.7rem">In Person</span></div>
       </div>
     </div>
-    <div class="sched-scroll">
-      <div class="sched-grid">
-        <!-- Monday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Monday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="salsa">
-              <div class="sched-time">11:00 am · 60 min</div>
-              <div class="sched-name">Salsa</div>
-              <div class="sched-sub">Level 1</div>
-            </div>
-            <div class="sched-item" data-t="bachata">
-              <div class="sched-time">5:30 pm · 60 min</div>
-              <div class="sched-name">Bachata</div>
-              <div class="sched-sub">Beginner</div>
-            </div>
-            <div class="sched-item" data-t="salsa">
-              <div class="sched-time">7:00 pm · 60 min</div>
-              <div class="sched-name">Salsa</div>
-              <div class="sched-sub">Level 2</div>
-            </div>
-          </div>
+
+    <div class="day-label-row">
+      <span class="day-name-big">Monday</span>
+      <span class="day-note">Every week · Reserve via WhatsApp</span>
+    </div>
+
+    <div class="featured-classes">
+      <div class="featured-class">
+        <div class="fc-time">8:30 pm – 9:30 pm · 60 min</div>
+        <div class="fc-style">Salsa On2</div>
+        <div class="fc-name">Body<br>Movement</div>
+        <div class="fc-badges">
+          <span class="badge badge-live">Online Live</span>
+          <span class="badge badge-ip">In Person</span>
         </div>
-        <!-- Tuesday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Tuesday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="contemporary">
-              <div class="sched-time">9:00 am · 75 min</div>
-              <div class="sched-name">Contemporary</div>
-              <div class="sched-sub">Open Level</div>
-            </div>
-            <div class="sched-item" data-t="jazz">
-              <div class="sched-time">6:30 pm · 60 min</div>
-              <div class="sched-name">Jazz</div>
-              <div class="sched-sub">All Levels</div>
-            </div>
-          </div>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-book">Reserve via WhatsApp →</a>
+      </div>
+      <div class="featured-class">
+        <div class="fc-time">9:30 pm – 10:30 pm · 60 min</div>
+        <div class="fc-style">Salsa On2</div>
+        <div class="fc-name">Pasos &amp;<br>Estilo</div>
+        <div class="fc-badges">
+          <span class="badge badge-live">Online Live</span>
+          <span class="badge badge-ip">In Person</span>
         </div>
-        <!-- Wednesday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Wednesday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="hiphop">
-              <div class="sched-time">5:30 pm · 60 min</div>
-              <div class="sched-name">Hip Hop</div>
-              <div class="sched-sub">Beginner</div>
-            </div>
-            <div class="sched-item" data-t="salsa">
-              <div class="sched-time">7:00 pm · 60 min</div>
-              <div class="sched-name">Salsa</div>
-              <div class="sched-sub">Level 3</div>
-            </div>
-          </div>
-        </div>
-        <!-- Thursday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Thursday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="jazz">
-              <div class="sched-time">6:00 pm · 60 min</div>
-              <div class="sched-name">Jazz</div>
-              <div class="sched-sub">Intermediate</div>
-            </div>
-            <div class="sched-item" data-t="bachata">
-              <div class="sched-time">7:15 pm · 60 min</div>
-              <div class="sched-name">Bachata</div>
-              <div class="sched-sub">Intermediate</div>
-            </div>
-          </div>
-        </div>
-        <!-- Friday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Friday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="contemporary">
-              <div class="sched-time">5:30 pm · 75 min</div>
-              <div class="sched-name">Contemporary</div>
-              <div class="sched-sub">Open Level</div>
-            </div>
-            <div class="sched-item" data-t="social">
-              <div class="sched-time">8:00 pm · 2 hrs</div>
-              <div class="sched-name">Salsa Social</div>
-              <div class="sched-sub">All Levels</div>
-            </div>
-          </div>
-        </div>
-        <!-- Saturday -->
-        <div class="sched-col">
-          <div class="sched-col-h">Saturday</div>
-          <div class="sched-items">
-            <div class="sched-item" data-t="workshop">
-              <div class="sched-time">10:00 am · 90 min</div>
-              <div class="sched-name">Workshop</div>
-              <div class="sched-sub">Rotating topics</div>
-            </div>
-            <div class="sched-item" data-t="social">
-              <div class="sched-time">12:00 pm · Open</div>
-              <div class="sched-name">Open Practice</div>
-              <div class="sched-sub">All styles</div>
-            </div>
-          </div>
-        </div>
+        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="fc-book">Reserve via WhatsApp →</a>
       </div>
     </div>
+
+    <p class="sched-coming">More days and class styles coming soon — <a href="#contact">get notified</a>.</p>
   </div>
 </section>
 
@@ -1287,15 +1304,16 @@ footer {
           <div class="cinfo-val">hello@cadanceco.com</div>
         </div>
         <div class="cinfo-item">
-          <div class="cinfo-lbl">Phone</div>
-          <div class="cinfo-val">(555) 000-0000</div>
+          <div class="cinfo-lbl">WhatsApp / Phone</div>
+          <div class="cinfo-val">
+            <a href="https://wa.me/18013884572" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:500">+1 801 388 4572 — Book via WhatsApp →</a>
+          </div>
         </div>
         <div class="cinfo-item">
           <div class="cinfo-lbl">Follow Along</div>
           <div class="soc-row">
-            <a href="#" class="soc-link">Instagram</a>
-            <a href="#" class="soc-link">TikTok</a>
-            <a href="#" class="soc-link">Facebook</a>
+            <a href="https://instagram.com/cadance_co" target="_blank" rel="noopener" class="soc-link">@cadance_co</a>
+            <a href="https://instagram.com/judithmariepetri" target="_blank" rel="noopener" class="soc-link">@judithmariepetri</a>
           </div>
         </div>
       </div>
@@ -1318,11 +1336,9 @@ footer {
           <label for="interest">I'm interested in</label>
           <select id="interest" name="interest">
             <option value="">— Select —</option>
-            <option>Salsa (Group Class)</option>
-            <option>Bachata (Group Class)</option>
-            <option>Contemporary (Group Class)</option>
-            <option>Jazz (Group Class)</option>
-            <option>Hip Hop (Group Class)</option>
+            <option>Body Movement (Salsa On2 — Monday 8:30 pm)</option>
+            <option>Pasos &amp; Estilo (Salsa On2 — Monday 9:30 pm)</option>
+            <option>Both Monday classes</option>
             <option>Private Lessons</option>
             <option>Wedding Choreography</option>
             <option>Competition Prep</option>
