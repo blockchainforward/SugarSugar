@@ -153,12 +153,11 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 2.5rem;
-  transition: background .3s, border-color .3s, padding .3s;
-  border-bottom: 1px solid transparent;
+  background: #0A0402;
+  border-bottom: 1px solid #32180E;
+  transition: padding .3s;
 }
 .nav.stuck {
-  background: #0A0402;
-  border-bottom-color: #32180E;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -265,26 +264,28 @@ section {
     );
   pointer-events: none;
 }
-/* ─── VIDEO SHOWCASE ─── */
+/* ─── VIDEO SHOWCASE / HERO ─── */
 .video-showcase {
   width: 100%;
+  min-height: 100vh;
   background: #000;
   position: relative;
   overflow: hidden;
-  line-height: 0;
 }
 .video-showcase video {
-  width: 100%;
-  height: auto;
-  max-height: 90vh;
-  display: block;
-  object-fit: contain;
-}
-.video-showcase-overlay {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.video-showcase-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
   background: linear-gradient(to bottom,
-    rgba(0,0,0,.15) 0%,
+    rgba(0,0,0,.25) 0%,
     rgba(0,0,0,.35) 50%,
     rgba(0,0,0,.65) 100%
   );
@@ -293,7 +294,7 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem 2rem 5rem;
+  padding: 7rem 2rem 5rem;
   gap: 1.25rem;
 }
 .video-showcase-title {
@@ -1324,32 +1325,18 @@ footer {
   </button>
 </nav>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="top" aria-label="Welcome to Cadance Company">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <span class="hero-eyebrow">Cadance Company — Dance Studio</span>
-    <h1 class="hero-title">Learn to dance<br>with Judith Marie.</h1>
-    <p class="hero-sub">
-      Salsa On2 classes every Monday — body movement, footwork, and
-      styling, in person and live online.
-    </p>
-    <div class="hero-actions">
-      <a href="#schedule" class="btn-primary">View Schedule →</a>
-      <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="btn-ghost-w">Book via WhatsApp</a>
-    </div>
-    <div class="hero-trust">
-      <span><strong>Salsa On2</strong> specialist</span>
-      <span class="sep">·</span>
-      <span>In person &amp; <strong>online live</strong></span>
-      <span class="sep">·</span>
-      <span>Every <strong>Monday</strong></span>
-      <span class="sep">·</span>
-      <span>Starting <strong>Sep 14</strong></span>
-    </div>
+<!-- ═══ VIDEO SHOWCASE / HERO ═══ -->
+<div class="video-showcase" id="top">
+  <video autoplay muted loop playsinline>
+    <source src="Cadance%20site%20class%20video.mov" type="video/mp4">
+    <source src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/main/Cadance%20site%20class%20video.mov" type="video/mp4">
+  </video>
+  <div class="video-showcase-overlay">
+    <h2 class="video-showcase-title">Salsa Classes in Barcelona<br>with Judith Marie.</h2>
+    <p class="video-showcase-sub">Learn, dance, and connect with our Salsa On2 community.</p>
+    <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="video-showcase-cta">Reserve a spot →</a>
   </div>
-  <div class="scroll-hint" aria-hidden="true">Scroll</div>
-</section>
+</div>
 
 <!-- ═══ PILLARS ═══ -->
 <div class="pillars" id="why">
@@ -1366,19 +1353,6 @@ footer {
       <span class="pillar-icon">🏆</span>
       <div class="pillar-label">World-Class Instruction</div>
     </div>
-  </div>
-</div>
-
-<!-- ═══ VIDEO SHOWCASE ═══ -->
-<div class="video-showcase">
-  <video autoplay muted loop playsinline>
-    <source src="Cadance%20site%20class%20video.mov" type="video/mp4">
-    <source src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/main/Cadance%20site%20class%20video.mov" type="video/mp4">
-  </video>
-  <div class="video-showcase-overlay">
-    <h2 class="video-showcase-title">Salsa Classes in Barcelona<br>with Judith Marie.</h2>
-    <p class="video-showcase-sub">Learn, dance, and connect with our Salsa On2 community.</p>
-    <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="video-showcase-cta">Reserve a spot →</a>
   </div>
 </div>
 
