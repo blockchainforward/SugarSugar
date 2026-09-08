@@ -251,13 +251,39 @@ section {
 .hero-glow {
   position: absolute;
   inset: 0;
-  /* Dark gradient overlay — keeps text legible over the photo */
+  z-index: 1;
+  /* Overlay for legibility over video or photo */
   background:
-    linear-gradient(to bottom, rgba(14,6,4,.55) 0%, rgba(14,6,4,.25) 40%, rgba(14,6,4,.7) 85%, #0E0604 100%),
-    radial-gradient(ellipse 70% 60% at 65% 50%, transparent 30%, rgba(14,6,4,.5) 100%);
+    linear-gradient(to bottom,
+      rgba(4,1,0,.65) 0%,
+      rgba(4,1,0,.35) 35%,
+      rgba(4,1,0,.55) 70%,
+      #080200 100%
+    );
   pointer-events: none;
 }
-/* Hero photo as full-bleed background element (fallback to CSS bg-image) */
+/* ── Hero video background (YouTube iframe) ── */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #080200;
+}
+.hero-video-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Portrait (9:16) Shorts video — scale to cover landscape viewport */
+  width: 100vw;
+  height: calc(100vw * 16 / 9);
+  min-height: 100vh;
+  min-width: calc(100vh * 9 / 16);
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
+}
+/* Hero photo fallback (shown on mobile where YouTube autoplay is blocked) */
 .hero-photo-img {
   position: absolute;
   inset: 0;
@@ -266,10 +292,13 @@ section {
   object-fit: cover;
   object-position: center 20%;
   z-index: 0;
-  display: block;
+  display: none; /* hidden until src is set */
 }
-/* Hide the <img> when it has no src (empty string = broken image hidden via CSS) */
 .hero-photo-img:not([src]), .hero-photo-img[src=""] { display: none; }
+/* On mobile hide the iframe (autoplay blocked) */
+@media (max-width: 768px) {
+  .hero-video-bg { display: none; }
+}
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -1272,9 +1301,16 @@ footer {
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="top" aria-label="Welcome to Cadance Company">
+  <!-- YouTube Shorts background video (autoplay, muted, looped) — hidden on mobile -->
+  <div class="hero-video-bg" aria-hidden="true">
+    <iframe
+      src="https://www.youtube.com/embed/R557WbFJ8t0?autoplay=1&mute=1&loop=1&playlist=R557WbFJ8t0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
+      allow="autoplay; encrypted-media"
+      title="Cadance Company — Judith Marie teaching Salsa On2"
+    ></iframe>
+  </div>
   <div class="hero-glow" aria-hidden="true"></div>
-  <!-- Hero photo — sits behind the overlay via position:absolute, z-index:0 -->
-  <!-- Replace src with the actual image path/URL when hosted -->
+  <!-- Hero photo fallback — set src when image is hosted -->
   <img class="hero-photo-img" src="" alt="Judith Marie — Cadance Company" aria-hidden="true" id="heroPhotoImg">
   <div class="hero-inner">
     <span class="hero-eyebrow">Cadance Company — Dance Studio</span>
@@ -1580,7 +1616,7 @@ footer {
     <p class="lbl">Watch &amp; Learn</p>
     <h2 class="hdg">See Judith teach.</h2>
     <p class="sub">Body mechanics, musicality, and expression — see what a Cadance class actually looks like.</p>
-    <div class="video-wrap" id="videoWrap" data-yt="" role="button" tabindex="0" aria-label="Play video">
+    <div class="video-wrap" id="videoWrap" data-yt="R557WbFJ8t0" role="button" tabindex="0" aria-label="Play video">
       <div class="video-thumb" id="videoThumb">
         <div class="play-btn" aria-hidden="true">▶</div>
         <p class="video-caption"><strong>Cadance Company</strong><br>Salsa On2 with Judith Marie — coming soon</p>
