@@ -272,14 +272,22 @@ section {
   position: relative;
   overflow: hidden;
 }
-.video-showcase video {
+.video-showcase-bg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center 30%;
+  overflow: hidden;
+}
+.video-showcase-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 56.25vw;   /* 16:9 */
+  min-height: 100vh;
+  min-width: 177.78vh;
+  pointer-events: none;
+  border: none;
 }
 .video-showcase-overlay {
   position: relative;
@@ -1328,10 +1336,13 @@ footer {
 
 <!-- ═══ VIDEO SHOWCASE / HERO ═══ -->
 <div class="video-showcase" id="top">
-  <video autoplay muted loop playsinline>
-    <source src="Cadance%20site%20class%20video.mov" type="video/mp4">
-    <source src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/main/Cadance%20site%20class%20video.mov" type="video/mp4">
-  </video>
+  <div class="video-showcase-bg">
+    <iframe
+      src="https://player.vimeo.com/video/1225016049?background=1&autoplay=1&loop=1&mute=1&autopause=0"
+      allow="autoplay; fullscreen"
+      title="Cadance Company dance class video"
+    ></iframe>
+  </div>
   <div class="video-showcase-overlay">
     <h2 class="video-showcase-title">Salsa Classes in Barcelona<br>with Judith Marie.</h2>
     <p class="video-showcase-sub">Learn, dance, and connect with our Salsa On2 community.</p>
