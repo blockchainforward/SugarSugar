@@ -282,11 +282,9 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Portrait 9:16 video: height = width × 16/9 */
-  width: 100vw;
-  height: 177.78vw;
-  min-height: 100vh;
-  min-width: 56.25vh;
+  /* 4:3 video cover */
+  width: max(100vw, 133.33vh);
+  height: max(100vh, 75vw);
   pointer-events: none;
   border: none;
 }
@@ -1339,7 +1337,7 @@ footer {
 <div class="video-showcase" id="top">
   <div class="video-showcase-bg">
     <iframe
-      src="https://player.vimeo.com/video/1225016049?background=1&autoplay=1&loop=1&mute=1&autopause=0"
+      src="https://player.vimeo.com/video/1225021383?background=1&autoplay=1&loop=1&mute=1&autopause=0"
       allow="autoplay; fullscreen"
       title="Cadance Company dance class video"
     ></iframe>
