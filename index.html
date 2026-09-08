@@ -255,14 +255,13 @@ section {
 .hero-glow {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  /* Overlay for legibility over video or photo */
+  z-index: 2; /* above video (0) and photo (1) */
   background:
     linear-gradient(to bottom,
-      rgba(4,1,0,.65) 0%,
-      rgba(4,1,0,.35) 35%,
-      rgba(4,1,0,.55) 70%,
-      #080200 100%
+      rgba(4,1,0,.6) 0%,
+      rgba(4,1,0,.25) 35%,
+      rgba(4,1,0,.5) 70%,
+      #060100 100%
     );
   pointer-events: none;
 }
@@ -287,7 +286,7 @@ section {
   border: none;
   pointer-events: none;
 }
-/* Hero photo — always present as background; video overlays it on desktop */
+/* Hero photo — above video, below glow overlay */
 .hero-photo-img {
   position: absolute;
   inset: 0;
@@ -295,7 +294,7 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  z-index: 0;
+  z-index: 1;
   display: block;
 }
 .hero-photo-img:not([src]), .hero-photo-img[src=""] { display: none; }
@@ -305,7 +304,7 @@ section {
 }
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 860px;
 }
 .hero-eyebrow {
@@ -394,6 +393,7 @@ section {
   position: absolute;
   bottom: 2rem;
   left: 50%;
+  z-index: 3;
   transform: translateX(-50%);
   font-size: var(--sz-xs);
   letter-spacing: .15em;
