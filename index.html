@@ -163,15 +163,18 @@ section {
   padding-bottom: 1rem;
 }
 .nav-logo {
-  font-family: var(--font-h);
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: .04em;
-  text-transform: uppercase;
   text-decoration: none;
-  color: #FFF2E4;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
-.nav-logo em { color: var(--accent); font-style: normal; }
+.nav-logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+.nav.stuck .nav-logo img { height: 32px; }
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -283,19 +286,19 @@ section {
   border: none;
   pointer-events: none;
 }
-/* Hero photo fallback (shown on mobile where YouTube autoplay is blocked) */
+/* Hero photo — always present as background; video overlays it on desktop */
 .hero-photo-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 15%;
   z-index: 0;
-  display: none; /* hidden until src is set */
+  display: block;
 }
 .hero-photo-img:not([src]), .hero-photo-img[src=""] { display: none; }
-/* On mobile hide the iframe (autoplay blocked) */
+/* On mobile hide the video (autoplay blocked) — photo shows instead */
 @media (max-width: 768px) {
   .hero-video-bg { display: none; }
 }
@@ -1212,15 +1215,17 @@ footer {
   gap: 2rem;
 }
 .footer-logo {
-  font-family: var(--font-h);
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: .04em;
-  text-transform: uppercase;
   text-decoration: none;
-  color: rgba(255,242,228,.35);
+  display: flex;
+  align-items: center;
 }
-.footer-logo em { color: var(--accent); font-style: normal; }
+.footer-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: .35;
+}
 .footer-links { display: flex; gap: 1.75rem; list-style: none; }
 .footer-links a {
   font-size: var(--sz-xs);
@@ -1284,7 +1289,9 @@ footer {
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="nav" id="nav">
-  <a href="#top" class="nav-logo">Cadance<em>.</em></a>
+  <a href="#top" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/0f743872f970047460ad9b6c345eb2b3936d7f38/Cadance%20Website/Images/178ab2b2-7e85-4347-bc22-638b284d926f-2.png" alt="Cadance Company">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#classes">Classes</a></li>
@@ -1311,7 +1318,7 @@ footer {
   </div>
   <div class="hero-glow" aria-hidden="true"></div>
   <!-- Hero photo fallback — set src when image is hosted -->
-  <img class="hero-photo-img" src="" alt="Judith Marie — Cadance Company" aria-hidden="true" id="heroPhotoImg">
+  <img class="hero-photo-img" src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/0f743872f970047460ad9b6c345eb2b3936d7f38/Cadance%20Website/Images/IMG_3949%203.JPG" alt="Judith Marie — Cadance Company" aria-hidden="true" id="heroPhotoImg">
   <div class="hero-inner">
     <span class="hero-eyebrow">Cadance Company — Dance Studio</span>
     <h1 class="hero-title">Learn to dance<br>with Judith Marie.</h1>
@@ -1801,7 +1808,9 @@ footer {
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
-    <a href="#top" class="footer-logo">Cadance<em>.</em></a>
+    <a href="#top" class="footer-logo">
+      <img src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/0f743872f970047460ad9b6c345eb2b3936d7f38/Cadance%20Website/Images/178ab2b2-7e85-4347-bc22-638b284d926f-2.png" alt="Cadance Company">
+    </a>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
