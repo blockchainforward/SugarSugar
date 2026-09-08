@@ -280,33 +280,38 @@ section {
   display: block;
   object-fit: contain;
 }
-.video-showcase-bar {
+.video-showcase-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2.5rem 3rem;
-  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,.15) 0%,
+    rgba(0,0,0,.35) 50%,
+    rgba(0,0,0,.65) 100%
+  );
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  line-height: 1.4;
-}
-.video-showcase-label {
-  font-size: var(--sz-xs);
-  font-weight: 500;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(255,242,228,.55);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem 5rem;
+  gap: 1.25rem;
 }
 .video-showcase-title {
   font-family: var(--font-h);
-  font-size: var(--sz-2xl);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
-  color: #FFF2E4;
-  line-height: 1.1;
+  color: #fff;
+  line-height: 1.05;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0,0,0,.5);
+}
+.video-showcase-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.8);
+  max-width: 560px;
+  line-height: 1.6;
+  text-shadow: 0 1px 12px rgba(0,0,0,.5);
 }
 .video-showcase-cta {
   display: inline-flex;
@@ -315,14 +320,14 @@ section {
   font-size: var(--sz-sm);
   font-weight: 600;
   text-decoration: none;
-  padding: .75rem 1.75rem;
+  padding: .875rem 2rem;
   background: var(--accent);
   color: #fff;
   border-radius: 999px;
-  transition: background .2s;
-  flex-shrink: 0;
+  transition: background .2s, transform .15s;
+  margin-top: .5rem;
 }
-.video-showcase-cta:hover { background: var(--accent-h); }
+.video-showcase-cta:hover { background: var(--accent-h); transform: translateY(-1px); }
 .hero-inner {
   position: relative;
   z-index: 3;
@@ -1370,11 +1375,9 @@ footer {
     <source src="Cadance%20site%20class%20video.mov" type="video/mp4">
     <source src="https://raw.githubusercontent.com/blockchainforward/SugarSugar/main/Cadance%20site%20class%20video.mov" type="video/mp4">
   </video>
-  <div class="video-showcase-bar">
-    <div>
-      <div class="video-showcase-label">Live class — Salsa On2</div>
-      <div class="video-showcase-title">Judith Marie in action.</div>
-    </div>
+  <div class="video-showcase-overlay">
+    <h2 class="video-showcase-title">Salsa Classes in Barcelona<br>with Judith Marie.</h2>
+    <p class="video-showcase-sub">Learn, dance, and connect with our Salsa On2 community.</p>
     <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="video-showcase-cta">Reserve a spot →</a>
   </div>
 </div>
