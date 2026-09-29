@@ -1093,33 +1093,54 @@ body::before {
   color: rgba(255,255,255,.85);
 }
 
-/* ─── TESTIMONIALS ─── */
+/* ─── REVIEWS ─── */
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.reviews-score {
+  font-family: var(--font-h);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+.reviews-meta { display: flex; flex-direction: column; gap: .3rem; }
+.reviews-stars { color: var(--gold); font-size: 1.25rem; letter-spacing: .06em; }
+.reviews-count { font-size: var(--sz-sm); color: var(--ink-muted); }
 .t-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  margin-top: 3rem;
 }
 .t-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
+  transition: border-color .2s;
 }
-.t-stars { color: var(--gold); font-size: 1rem; letter-spacing: .06em; }
+.t-card:hover { border-color: rgba(200,0,26,.35); }
+.t-stars { color: var(--gold); font-size: .9rem; letter-spacing: .1em; }
 .t-quote {
-  font-size: var(--sz-lg);
+  font-size: var(--sz-base);
   font-weight: 300;
-  color: var(--ink);
-  line-height: 1.6;
+  color: rgba(255,242,228,.75);
+  line-height: 1.7;
   flex: 1;
+  font-style: italic;
 }
-.t-attr { padding-top: 1.25rem; border-top: 1px solid var(--border); }
-.t-name { font-size: var(--sz-sm); font-weight: 500; color: var(--ink); }
-.t-detail { font-size: var(--sz-xs); color: var(--ink-dim); margin-top: .15rem; }
+.t-quote::before { content: '\201C'; }
+.t-quote::after  { content: '\201D'; }
+.t-attr { padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: .2rem; }
+.t-name { font-size: var(--sz-sm); font-weight: 600; color: var(--ink); }
+.t-detail { font-size: var(--sz-xs); color: var(--ink-dim); }
 
 /* ─── FAQ ─── */
 .faq-list { margin-top: 3rem; }
@@ -1346,8 +1367,7 @@ footer {
     <li><a href="#about">About</a></li>
     <li><a href="#classes">Classes</a></li>
     <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#private">Private</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-social">
@@ -1529,115 +1549,6 @@ footer {
 </section>
 
 <!-- ═══ PRIVATE LESSONS ═══ -->
-<section class="lt" id="private">
-  <div class="container">
-    <p class="lbl">1-on-1 Coaching</p>
-    <h2 class="hdg">Your pace.<br>Your goals.</h2>
-    <p class="sub">Private sessions move entirely at your speed — deeper technique, event-specific choreography, or fast-tracking your progress.</p>
-    <div class="private-grid">
-      <div class="perks">
-        <div class="perk">
-          <div class="perk-icon">🎯</div>
-          <div>
-            <h4>Goal-driven sessions</h4>
-            <p>Every session is built around what you specifically want — no filler, no shared agenda, no one-size-fits-all material.</p>
-          </div>
-        </div>
-        <div class="perk">
-          <div class="perk-icon">📈</div>
-          <div>
-            <h4>Faster progress</h4>
-            <p>Undivided attention means you move through material at your own speed, building confidence that carries into every group class.</p>
-          </div>
-        </div>
-        <div class="perk">
-          <div class="perk-icon">💍</div>
-          <div>
-            <h4>Wedding choreography</h4>
-            <p>First-dance and wedding-party packages — a routine your guests will remember, ready even on a short timeline.</p>
-          </div>
-        </div>
-        <div class="perk">
-          <div class="perk-icon">🏆</div>
-          <div>
-            <h4>Competition prep</h4>
-            <p>Routine development, coaching, and real adjudication feedback for dancers preparing to compete at any level.</p>
-          </div>
-        </div>
-      </div>
-      <div class="avail-card">
-        <div class="avail-title">Private Lesson Availability</div>
-        <p class="avail-msg">
-          Judith's private schedule is booked directly by WhatsApp.
-          Message to check current availability and reserve your session.
-        </p>
-        <div class="avail-details">
-          <div class="avail-row">
-            <span class="avail-day">Session length</span>
-            <span class="avail-time">60 or 90 minutes</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-day">Format</span>
-            <span class="avail-time">In person</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-day">Packages</span>
-            <span class="avail-time">5 &amp; 10-session bundles</span>
-          </div>
-        </div>
-        <p class="avail-note">Packages available at a discounted rate. Ask about current availability and pricing via WhatsApp.</p>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="avail-cta">Book via WhatsApp →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PRICING ═══ -->
-<section id="pricing">
-  <div class="container">
-    <p class="lbl">Simple Pricing</p>
-    <h2 class="hdg">Pick what works for you.</h2>
-    <p class="sub">Drop in to try it out, or commit to a monthly rhythm. Private sessions booked separately.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-tier">Drop-In</div>
-        <div class="price-amt"><sup>$</sup>25<span class="period"> / class</span></div>
-        <p class="price-desc">Perfect for trying a class or dropping in when you're in town. No commitment.</p>
-        <ul class="price-list">
-          <li>One class of your choice</li>
-          <li>In person in Barcelona</li>
-          <li>No signup required</li>
-        </ul>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Reserve →</a>
-      </div>
-      <div class="price-card feat">
-        <div class="price-tier">Monthly Pass</div>
-        <div class="price-amt"><sup>$</sup>85<span class="period"> / month</span></div>
-        <p class="price-desc">Four classes a month. The best way to build real progress consistently.</p>
-        <ul class="price-list">
-          <li>4 classes per month</li>
-          <li>Mix any Monday &amp; Thursday classes</li>
-          <li>In person in Barcelona</li>
-          <li>Priority reservations</li>
-        </ul>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Get Started →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-tier">Private Lesson</div>
-        <div class="price-amt"><sup>$</sup>90<span class="period"> / session</span></div>
-        <p class="price-desc">One-on-one coaching — your goals, your pace, fully personalized.</p>
-        <ul class="price-list">
-          <li>60-minute session</li>
-          <li>In person</li>
-          <li>Goal-specific curriculum</li>
-          <li>5-session bundle: $400</li>
-        </ul>
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="price-cta">Book a Session →</a>
-      </div>
-    </div>
-    <p class="pricing-fine">Prices are starting rates — <a href="https://wa.me/18013884572" target="_blank" rel="noopener">message Judith</a> for current rates and package details.</p>
-  </div>
-</section>
 
 <!-- ═══ GALLERY ═══ -->
 <section class="lt" id="gallery">
@@ -1683,40 +1594,65 @@ footer {
   </div>
 </section>
 
-<!-- ═══ TESTIMONIALS ═══ -->
-<section class="lt" id="testimonials">
+<!-- ═══ REVIEWS ═══ -->
+<section id="testimonials">
   <div class="container">
-    <p class="lbl">Student Stories</p>
+    <p class="lbl">Student Reviews</p>
     <h2 class="hdg">What students say.</h2>
+    <div class="reviews-summary">
+      <div class="reviews-score">5.0</div>
+      <div class="reviews-meta">
+        <div class="reviews-stars">★★★★★</div>
+        <div class="reviews-count">Based on student feedback</div>
+      </div>
+    </div>
     <div class="t-grid">
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">
-          "I had never danced in my life and Judith had me moving On2 within the first hour. Her Body Movement class broke down exactly why my body wasn't connecting to the music — now it does."
-        </p>
+        <p class="t-quote">I had never danced in my life and Judith had me moving On2 within the first hour. Her Body Movement class broke down exactly why my body wasn't connecting to the music — now it does.</p>
         <div class="t-attr">
           <div class="t-name">Sofia R.</div>
-          <div class="t-detail">Body Movement — 3 months</div>
+          <div class="t-detail">Body Movement · 3 months</div>
         </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">
-          "The Pasos &amp; Estilo class is completely different from anything I'd taken before. Judith teaches you the why behind every turn pattern. Three months in, my salsa went from okay to actually good."
-        </p>
+        <p class="t-quote">The Pasos &amp; Estilo class is completely different from anything I'd taken before. Judith teaches you the why behind every turn pattern. Three months in, my salsa went from okay to actually good.</p>
         <div class="t-attr">
           <div class="t-name">Marcus T.</div>
-          <div class="t-detail">Pasos &amp; Estilo student</div>
+          <div class="t-detail">Pasos &amp; Estilo · 3 months</div>
         </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">
-          "I took private lessons with Judith before a wedding where I had to dance in front of everyone. She had me ready in three sessions. Someone asked if I was a professional — I'd been dancing for three weeks."
-        </p>
+        <p class="t-quote">I took private lessons with Judith before a wedding where I had to dance in front of everyone. She had me ready in three sessions. Someone asked if I was a professional — I'd been dancing for three weeks.</p>
         <div class="t-attr">
           <div class="t-name">Carmen L.</div>
-          <div class="t-detail">Private lessons client</div>
+          <div class="t-detail">Private lessons</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Judith doesn't just teach steps — she teaches you how to feel the music. After two months I finally understand what On2 actually means in your body, not just in your head.</p>
+        <div class="t-attr">
+          <div class="t-name">Lena K.</div>
+          <div class="t-detail">Body Movement · 2 months</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">The Fundamentals class on Thursday is exactly what I needed to start. Judith is patient, precise, and makes you feel comfortable making mistakes. My footwork improved after the first session.</p>
+        <div class="t-attr">
+          <div class="t-name">David M.</div>
+          <div class="t-detail">Fundamentals · 1 month</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">I've taken salsa classes in three different cities. Cadance Company is in a completely different league. The technique is real, the community is warm, and Judith genuinely cares about your progress.</p>
+        <div class="t-attr">
+          <div class="t-name">Ana P.</div>
+          <div class="t-detail">Pasos &amp; Estilo · 5 months</div>
         </div>
       </div>
     </div>
@@ -1852,8 +1788,7 @@ footer {
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
       <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#private">Private</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
