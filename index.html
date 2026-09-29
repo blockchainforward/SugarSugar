@@ -611,17 +611,16 @@ body::before {
   transition: transform .25s;
 }
 .class-card:hover { transform: translateY(-4px); }
-/* Photo placeholder background — replace background with url(photo.jpg) when available */
-.class-card.card-body-mv  { background: linear-gradient(160deg, #3D1A0A 0%, #1A0804 60%, #0A0200 100%); }
-.class-card.card-pasos    { background: linear-gradient(160deg, #3A0C08 0%, #1E0806 60%, #0A0200 100%); }
-.class-card.card-bachata  { background: linear-gradient(160deg, #1A0C20 0%, #120618 60%, #080200 100%); }
-.class-card.card-private  { background: linear-gradient(160deg, #0A1820 0%, #060E18 60%, #020408 100%); }
+.class-card.card-body-mv  { background: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=800&q=80') center/cover no-repeat; }
+.class-card.card-pasos    { background: url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&q=80') center/cover no-repeat; }
+.class-card.card-bachata  { background: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80') center/cover no-repeat; }
+.class-card.card-private  { background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80') center/cover no-repeat; }
 /* Dark gradient overlay so text is always legible */
 .class-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.1) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 50%, rgba(0,0,0,.25) 100%);
   z-index: 1;
 }
 .class-card-body {
