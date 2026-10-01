@@ -298,7 +298,9 @@ body::before {
 /* ─── VIDEO SHOWCASE / HERO ─── */
 .video-showcase {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  height: -webkit-fill-available;
+  min-height: 600px;
   background: #000;
   position: relative;
   overflow: hidden;
@@ -320,9 +322,9 @@ body::before {
   border: none;
 }
 .video-showcase-overlay {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  min-height: 100vh;
   background: linear-gradient(to bottom,
     rgba(0,0,0,.25) 0%,
     rgba(0,0,0,.35) 50%,
@@ -333,7 +335,7 @@ body::before {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 14rem 2rem 4rem;
+  padding: 2rem;
   gap: 1.25rem;
 }
 .video-showcase-title {
