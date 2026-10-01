@@ -1743,20 +1743,6 @@ footer {
 <!-- ═══ PRIVATE LESSONS ═══ -->
 
 <!-- ═══ GALLERY ═══ -->
-<section class="lt" id="gallery">
-  <div class="container">
-    <p class="lbl" data-i18n="gal.lbl">Studio Life</p>
-    <h2 class="hdg" data-i18n="gal.hdg">In the studio.</h2>
-    <div class="gallery-grid">
-      <div class="gal-item">Wide studio shot — replace with photo</div>
-      <div class="gal-item">Performance shot</div>
-      <div class="gal-item">Class in session</div>
-      <div class="gal-item">Workshop moment</div>
-      <div class="gal-item">Judith teaching — replace with photo</div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ VIDEO ═══ -->
 <!-- Set data-yt to your YouTube video ID (e.g. data-yt="dQw4w9WgXcQ") to enable playback -->
 <section id="video">
@@ -1922,7 +1908,7 @@ const LANG_T = {
     'faq.a6':"Yes. Both classes are designed so you can drop in at any point — Judith structures each session to be accessible whether it's your first class or your twentieth. Just message to reserve your spot before coming.",
     'faq.a7':'Yes, private lessons are available in person in Barcelona. Sessions are fully tailored to your goals — competition prep, wedding choreography, or accelerated technique. Message Judith via WhatsApp to discuss availability and scheduling.',
     'cont.lbl':'Get in Touch','cont.hdg':"Let's get you dancing.",
-    'cont.studio':'Studio','cont.wa':'WhatsApp / Phone','cont.email':'Email','cont.follow':'Follow Along',
+    'cont.studio':'Studio','cont.loc':'Gràcia, Barcelona<br><span style="font-size:var(--sz-sm);font-weight:300;color:var(--ink-muted)">In person — exact address sent on reservation</span>','cont.wa':'WhatsApp / Phone','cont.email':'Email','cont.follow':'Follow Along',
     'form.fn':'First Name','form.ln':'Last Name','form.em':'Email',
     'form.interest':"I'm interested in",'form.msg':'Message',
     'form.submit':'Send Message →',
@@ -1999,7 +1985,7 @@ const LANG_T = {
     'faq.a6':'Sí. Ambas clases están diseñadas para que puedas unirte en cualquier momento — Judith estructura cada sesión para que sea accesible ya sea tu primera clase o tu vigesíma. Solo envía un mensaje para reservar tu lugar antes de venir.',
     'faq.a7':'Sí, las clases privadas están disponibles presencialmente en Barcelona. Las sesiones se adaptan completamente a tus objetivos — preparación para competición, coreografía de boda o técnica acelerada. Escríbele a Judith por WhatsApp para hablar sobre disponibilidad.',
     'cont.lbl':'Contáctanos','cont.hdg':'Empecemos a bailar.',
-    'cont.studio':'Estudio','cont.wa':'WhatsApp / Teléfono','cont.email':'Correo','cont.follow':'Síguenos',
+    'cont.studio':'Estudio','cont.loc':'Gràcia, Barcelona<br><span style="font-size:var(--sz-sm);font-weight:300;color:var(--ink-muted)">Presencial — dirección exacta enviada al reservar</span>','cont.wa':'WhatsApp / Teléfono','cont.email':'Correo','cont.follow':'Síguenos',
     'form.fn':'Nombre','form.ln':'Apellido','form.em':'Correo electrónico',
     'form.interest':'Me interesa','form.msg':'Mensaje',
     'form.submit':'Enviar mensaje →',
@@ -2099,7 +2085,7 @@ function setLang(lang) {
       <div>
         <div class="cinfo-item">
           <div class="cinfo-lbl" data-i18n="cont.studio">Studio</div>
-          <div class="cinfo-val">Location coming soon<br><span style="font-size:var(--sz-sm);font-weight:300;color:var(--ink-muted)">In person — ask via WhatsApp for location</span></div>
+          <div class="cinfo-val" data-i18n="cont.loc">Gràcia, Barcelona<br><span style="font-size:var(--sz-sm);font-weight:300;color:var(--ink-muted)">In person — exact address sent on reservation</span></div>
         </div>
         <div class="cinfo-item">
           <div class="cinfo-lbl" data-i18n="cont.wa">WhatsApp / Phone</div>
