@@ -1424,6 +1424,93 @@ footer {
   .pricing-grid { max-width: none; }
   .nl-form { flex-direction: column; align-items: stretch; }
 }
+
+/* ─── FLOATING WHATSAPP WIDGET ─── */
+.wa-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .75rem;
+}
+.wa-popup {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem 1.25rem 1rem 1rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  max-width: 270px;
+  position: relative;
+  animation: wa-in .22s ease;
+}
+.wa-popup::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 22px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #fff;
+}
+.wa-popup.hidden { display: none; }
+@keyframes wa-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.wa-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: .85rem;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.wa-msg {
+  flex: 1;
+  font-size: .88rem;
+  color: #111;
+  line-height: 1.45;
+  font-weight: 400;
+}
+.wa-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 0 0 .5rem;
+  align-self: flex-start;
+  transition: color .15s;
+}
+.wa-close-btn:hover { color: #333; }
+.wa-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(200,0,26,.45);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.wa-btn:hover { background: var(--accent-h); transform: scale(1.06); }
 </style>
 
 <!-- ═══ NAVIGATION ═══ -->
@@ -1929,4 +2016,39 @@ function handleSubmit(e) {
   document.getElementById('formSuccess').style.display = 'block';
   e.target.reset();
 }
+
+// WhatsApp floating widget
+(function() {
+  const popup = document.getElementById('wa-popup');
+  const closeBtn = document.getElementById('wa-close-btn');
+  const btn = document.getElementById('wa-open-btn');
+  let dismissed = false;
+  // auto-show after 3s if not dismissed
+  setTimeout(() => { if (!dismissed) popup.classList.remove('hidden'); }, 3000);
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    dismissed = true;
+    popup.classList.add('hidden');
+  });
+  btn.addEventListener('click', () => {
+    if (popup.classList.contains('hidden')) {
+      dismissed = false;
+      popup.classList.remove('hidden');
+    }
+  });
+})();
 </script>
+
+<!-- ═══ FLOATING WHATSAPP WIDGET ═══ -->
+<div class="wa-widget">
+  <div id="wa-popup" class="wa-popup hidden">
+    <div class="wa-avatar">JM</div>
+    <div class="wa-msg">Hi there, have a question?<br>Send us a text here.</div>
+    <button id="wa-close-btn" class="wa-close-btn" aria-label="Close">✕</button>
+  </div>
+  <a id="wa-open-btn" href="https://wa.me/18013884572" target="_blank" rel="noopener" class="wa-btn" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.57A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.69.93.97-3.6-.24-.38A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.17 8.17 0 0 1-2.4-1.48 9.03 9.03 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z" fill="#fff"/>
+    </svg>
+  </a>
+</div>
