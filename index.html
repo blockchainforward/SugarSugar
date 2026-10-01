@@ -683,73 +683,69 @@ body::before {
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
-/* ─── CALENDAR ─── */
-.cal-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; }
-.cal {
-  display: grid;
-  grid-template-columns: 52px repeat(7, 1fr);
-  grid-template-rows: 44px repeat(8, 60px);
-  min-width: 520px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg-card);
-}
-.cal-corner {
-  background: var(--bg-raise);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.cal-dh {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  background: var(--bg-raise);
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-}
-.cal-dh.on { color: var(--ink); }
-.cal-tl {
-  grid-column: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 6px 8px 0 0;
-  font-size: .62rem;
-  color: var(--ink-dim);
-  background: var(--bg-raise);
-  border-right: 1px solid var(--border);
-  border-top: 1px solid var(--border);
-  font-variant-numeric: tabular-nums;
-}
-.cal-tl.half { border-top: 1px dashed rgba(42,20,8,.6); background: var(--bg-raise); }
-.cal-cell { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
-.cal-cell.half { border-top: 1px dashed rgba(42,20,8,.5); }
-.cal-ev {
-  position: relative;
-  z-index: 1;
-  margin: 4px 5px;
-  background: rgba(200,0,26,.13);
-  border: 1px solid rgba(200,0,26,.3);
-  border-left: 3px solid var(--accent);
-  border-radius: 6px;
-  padding: 8px 10px;
+/* ─── CLASS LIST ─── */
+.class-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  text-decoration: none;
-  overflow: hidden;
-  transition: background .2s;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
 }
-.cal-ev:hover { background: rgba(200,0,26,.22); }
-.ev-time { font-size: .62rem; color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 500; }
-.ev-name { font-family: var(--font-h); font-size: .88rem; font-weight: 800; color: var(--ink); line-height: 1.1; }
-.ev-tag { font-size: .58rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 1px; }
+.class-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  transition: background .2s, border-color .2s;
+}
+.class-row:hover { background: rgba(200,0,26,.07); border-color: rgba(200,0,26,.4); }
+.class-day {
+  flex-shrink: 0;
+  min-width: 56px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.class-time {
+  flex-shrink: 0;
+  min-width: 120px;
+  font-size: .82rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+.class-info { flex: 1; }
+.class-name {
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.class-desc {
+  font-size: .78rem;
+  color: var(--ink-dim);
+  margin-top: 2px;
+  letter-spacing: .03em;
+}
+.class-row-cta {
+  flex-shrink: 0;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .class-row { flex-wrap: wrap; gap: .5rem; }
+  .class-time { min-width: auto; }
+  .class-row-cta { display: none; }
+}
 .badges { display: flex; gap: .5rem; flex-wrap: wrap; }
 .badge {
   font-size: var(--sz-xs);
@@ -1684,61 +1680,34 @@ footer {
         <p class="sub" data-i18n="sched.sub">Mondays &amp; Thursdays — in person in Barcelona.</p>
       </div>
     </div>
-    <div class="cal-wrap">
-      <div class="cal">
-        <!-- Header row -->
-        <div class="cal-corner"></div>
-        <div class="cal-dh on">MON</div>
-        <div class="cal-dh">TUE</div>
-        <div class="cal-dh">WED</div>
-        <div class="cal-dh on">THU</div>
-        <div class="cal-dh">FRI</div>
-        <div class="cal-dh">SAT</div>
-        <div class="cal-dh">SUN</div>
-        <!-- 19:00 row -->
-        <div class="cal-tl">19:00</div>
-        <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
-        <!-- 19:30 row -->
-        <div class="cal-tl half"></div>
-        <div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div>
-        <!-- 20:00 row -->
-        <div class="cal-tl">20:00</div>
-        <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
-        <!-- 20:30 row -->
-        <div class="cal-tl half"></div>
-        <div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div>
-        <!-- 21:00 row -->
-        <div class="cal-tl">21:00</div>
-        <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
-        <!-- 21:30 row -->
-        <div class="cal-tl half"></div>
-        <div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div>
-        <!-- 22:00 row -->
-        <div class="cal-tl">22:00</div>
-        <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
-        <!-- 22:30 row -->
-        <div class="cal-tl half"></div>
-        <div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div><div class="cal-cell half"></div>
-        <!-- Events (explicitly placed) -->
-        <!-- Fundamentals: Thu 19:30–20:30 → col 5, rows 3–5 -->
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="cal-ev" style="grid-column:5;grid-row:3/5">
-          <div class="ev-time">19:30 – 20:30</div>
-          <div class="ev-name" data-i18n="cal.fund">Fundamentals</div>
-          <div class="ev-tag">Pasos &amp; Estilo · Thu</div>
-        </a>
-        <!-- Body Movement: Mon 20:30–21:30 → col 2, rows 5–7 -->
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="cal-ev" style="grid-column:2;grid-row:5/7">
-          <div class="ev-time">20:30 – 21:30</div>
-          <div class="ev-name" data-i18n="cal.bm">Body Movement</div>
-          <div class="ev-tag">Salsa On2 · Mon</div>
-        </a>
-        <!-- Pasos & Estilo: Mon 21:30–22:30 → col 2, rows 7–9 -->
-        <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="cal-ev" style="grid-column:2;grid-row:7/9">
-          <div class="ev-time">21:30 – 22:30</div>
-          <div class="ev-name">Pasos &amp; Estilo</div>
-          <div class="ev-tag">Salsa On2 · Mon</div>
-        </a>
-      </div>
+    <div class="class-list">
+      <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="class-row">
+        <div class="class-day" data-i18n="cl.thu">Thu</div>
+        <div class="class-time">19:30 – 20:30</div>
+        <div class="class-info">
+          <div class="class-name" data-i18n="cal.fund">Fundamentals</div>
+          <div class="class-desc" data-i18n="cl.fund.desc">Pasos &amp; Estilo · All levels · Gràcia, Barcelona</div>
+        </div>
+        <div class="class-row-cta" data-i18n="cl.book">Reserve →</div>
+      </a>
+      <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="class-row">
+        <div class="class-day" data-i18n="cl.mon">Mon</div>
+        <div class="class-time">20:30 – 21:30</div>
+        <div class="class-info">
+          <div class="class-name" data-i18n="cal.bm">Body Movement</div>
+          <div class="class-desc" data-i18n="cl.bm.desc">Salsa On2 · All levels · Gràcia, Barcelona</div>
+        </div>
+        <div class="class-row-cta" data-i18n="cl.book">Reserve →</div>
+      </a>
+      <a href="https://wa.me/18013884572" target="_blank" rel="noopener" class="class-row">
+        <div class="class-day" data-i18n="cl.mon">Mon</div>
+        <div class="class-time">21:30 – 22:30</div>
+        <div class="class-info">
+          <div class="class-name" data-i18n="cl.pe">Pasos &amp; Estilo</div>
+          <div class="class-desc" data-i18n="cl.pe.desc">Salsa On2 · Intermediate · Gràcia, Barcelona</div>
+        </div>
+        <div class="class-row-cta" data-i18n="cl.book">Reserve →</div>
+      </a>
     </div>
     <p class="sched-note">All classes every week — <a href="https://wa.me/18013884572" target="_blank" rel="noopener">reserve your spot via WhatsApp →</a></p>
   </div>
@@ -1876,6 +1845,11 @@ const LANG_T = {
     'sched.lbl':'Weekly Schedule','sched.hdg':'Every week, on repeat.',
     'sched.sub':'Mondays &amp; Thursdays — in person in Barcelona.',
     'cal.fund':'Fundamentals','cal.bm':'Body Movement',
+    'cl.thu':'Thu','cl.mon':'Mon',
+    'cl.fund.desc':'Pasos &amp; Estilo · All levels · Gràcia, Barcelona',
+    'cl.bm.desc':'Salsa On2 · All levels · Gràcia, Barcelona',
+    'cl.pe':'Pasos &amp; Estilo','cl.pe.desc':'Salsa On2 · Intermediate · Gràcia, Barcelona',
+    'cl.book':'Reserve →',
     'gal.lbl':'Studio Life','gal.hdg':'In the studio.',
     'vid.lbl':'Watch &amp; Learn','vid.hdg':'See Judith teach.',
     'vid.sub':'Body mechanics, musicality, and expression — see what a Cadance class actually looks like.',
@@ -1953,6 +1927,11 @@ const LANG_T = {
     'sched.lbl':'Horario Semanal','sched.hdg':'Cada semana, sin falta.',
     'sched.sub':'Lunes y Jueves — presencial en Barcelona.',
     'cal.fund':'Fundamentos','cal.bm':'Mov. Corporal',
+    'cl.thu':'Jue','cl.mon':'Lun',
+    'cl.fund.desc':'Pasos &amp; Estilo · Todos los niveles · Gràcia, Barcelona',
+    'cl.bm.desc':'Salsa On2 · Todos los niveles · Gràcia, Barcelona',
+    'cl.pe':'Pasos &amp; Estilo','cl.pe.desc':'Salsa On2 · Intermedio · Gràcia, Barcelona',
+    'cl.book':'Reservar →',
     'gal.lbl':'Vida en el Estudio','gal.hdg':'En el estudio.',
     'vid.lbl':'Mira y Aprende','vid.hdg':'Ve a Judith enseñar.',
     'vid.sub':'Mecánica corporal, musicalidad y expresión — ve cómo es realmente una clase de Cadance.',
