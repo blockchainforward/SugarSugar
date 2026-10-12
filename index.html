@@ -485,48 +485,121 @@ body::before {
   background: linear-gradient(to bottom, rgba(255,242,228,.18), transparent);
 }
 
-/* ─── WHY ─── */
-.why-hdg {
-  font-family: var(--font-h);
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.05;
-  text-wrap: balance;
-  text-align: center;
-  max-width: 680px;
-  margin: 0 auto 3.5rem;
+/* ─── WHY TRAIN ─── */
+.why-section {
+  background: #EDE5D8;
+  color: #1A0E04;
+  padding: 7rem 2.5rem;
 }
-.why-grid {
+.why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 6rem;
+  align-items: center;
 }
-.why-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 2rem 2.25rem;
-  transition: border-color .2s;
-}
-.why-card:hover { border-color: var(--accent); }
-.why-q {
-  font-size: var(--sz-base);
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: .875rem;
-  line-height: 1.45;
-}
-.why-a {
+.why-left {
   display: flex;
-  gap: .6rem;
-  align-items: flex-start;
-  font-size: var(--sz-sm);
-  font-weight: 300;
-  color: var(--ink-muted);
+  flex-direction: column;
+  gap: 2rem;
+}
+.why-eyebrow {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #8A5C3A;
+}
+.why-heading {
+  font-family: var(--font-h);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: #1A0E04;
+}
+.why-heading em {
+  font-style: normal;
+  color: var(--accent);
+}
+.why-lead {
+  font-size: 1rem;
+  color: #5C3D22;
+  line-height: 1.7;
+  max-width: 440px;
+}
+.why-video-slot {
+  aspect-ratio: 9/16;
+  max-height: 560px;
+  background: #D4C4B0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(90,50,20,.15);
+}
+.why-video-slot video,
+.why-video-slot iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+.why-video-placeholder {
+  text-align: center;
+  color: #8A6040;
+  font-size: .85rem;
+  font-weight: 500;
+  padding: 2rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.why-video-placeholder svg {
+  display: block;
+  margin: 0 auto 1rem;
+  opacity: .5;
+}
+.why-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(90,50,20,.15);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.why-feat {
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid rgba(90,50,20,.12);
+  border-bottom: 1px solid rgba(90,50,20,.12);
+  transition: background .2s;
+}
+.why-feat:nth-child(even) { border-right: none; }
+.why-feat:nth-last-child(-n+2) { border-bottom: none; }
+.why-feat:hover { background: rgba(200,0,26,.05); }
+.why-feat-title {
+  font-family: var(--font-h);
+  font-size: .88rem;
+  font-weight: 800;
+  color: #1A0E04;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .5rem;
+}
+.why-feat-body {
+  font-size: .82rem;
+  color: #5C3D22;
   line-height: 1.65;
 }
-.arr { color: var(--accent); flex-shrink: 0; margin-top: .1rem; }
+@media (max-width: 900px) {
+  .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .why-video-slot { aspect-ratio: 4/3; max-height: 320px; }
+}
+
+
 
 /* ─── ABOUT ─── */
 .about-grid {
@@ -1632,6 +1705,41 @@ footer {
   </div>
 </section>
 
+<!-- ═══ WHY TRAIN ═══ -->
+<section id="why" class="why-section">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="why-eyebrow" data-i18n="why.lbl">Your Training</div>
+      <h2 class="why-heading" data-i18n="why.hdg">Don't just learn the steps.<br><em>Become a dancer.</em></h2>
+      <p class="why-lead" data-i18n="why.lead">Judith's method goes beyond choreography — she teaches you how to move, feel, and connect to the music. Whether you're starting from zero or pushing your technique further, every class is built on real fundamentals.</p>
+      <div class="why-features">
+        <div class="why-feat">
+          <div class="why-feat-title" data-i18n="why.f1.t">Build Confidence</div>
+          <div class="why-feat-body" data-i18n="why.f1.b">From your first class, you'll feel your body respond. Small wins stack fast — most students feel the music differently within a month.</div>
+        </div>
+        <div class="why-feat">
+          <div class="why-feat-title" data-i18n="why.f2.t">Improve Your Technique</div>
+          <div class="why-feat-body" data-i18n="why.f2.b">Real Salsa On2 — not just steps to copy, but the mechanics behind every turn, isolation, and timing shift explained clearly.</div>
+        </div>
+        <div class="why-feat">
+          <div class="why-feat-title" data-i18n="why.f3.t">Understand Musicality</div>
+          <div class="why-feat-body" data-i18n="why.f3.b">Learn to hear the clave, feel the conga, and let the music lead your body — not the other way around.</div>
+        </div>
+        <div class="why-feat">
+          <div class="why-feat-title" data-i18n="why.f4.t">Have Fun &amp; Connect</div>
+          <div class="why-feat-body" data-i18n="why.f4.b">A warm studio, a real community, and classes that leave you energized — not exhausted. Dance is supposed to feel good.</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-video-slot">
+      <div class="why-video-placeholder">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#8A6040" stroke-width="2"/><polygon points="19,14 37,24 19,34" fill="#8A6040"/></svg>
+        <span data-i18n="why.vid">Teaching video<br>coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CLASSES ═══ -->
 <section id="classes">
   <div class="container">
@@ -1875,7 +1983,15 @@ const LANG_T = {
     'opt.wed':'Wedding Choreography','opt.comp':'Competition Prep','opt.other':'Something else',
     'ph.fn':'Maria','ph.ln':'Garcia','ph.em':'you@email.com',
     'ph.msg':'Tell Judith about your experience level and what you’re hoping to work on…',
-    'wa.msg':'Hi there! Have a question?<br>Send us a text — we reply fast.'
+    'wa.msg':'Hi there! Have a question?<br>Send us a text — we reply fast.',
+    'why.lbl':'Your Training',
+    'why.hdg':'Don\'t just learn the steps.<br><em>Become a dancer.</em>',
+    'why.lead':'Judith\'s method goes beyond choreography — she teaches you how to move, feel, and connect to the music. Whether you\'re starting from zero or pushing your technique further, every class is built on real fundamentals.',
+    'why.f1.t':'Build Confidence','why.f1.b':'From your first class, you\'ll feel your body respond. Small wins stack fast — most students feel the music differently within a month.',
+    'why.f2.t':'Improve Your Technique','why.f2.b':'Real Salsa On2 — not just steps to copy, but the mechanics behind every turn, isolation, and timing shift explained clearly.',
+    'why.f3.t':'Understand Musicality','why.f3.b':'Learn to hear the clave, feel the conga, and let the music lead your body — not the other way around.',
+    'why.f4.t':'Have Fun &amp; Connect','why.f4.b':'A warm studio, a real community, and classes that leave you energized — not exhausted. Dance is supposed to feel good.',
+    'why.vid':'Teaching video<br>coming soon'
   },
   es: {
     'nav.about':'Acerca','nav.classes':'Clases','nav.schedule':'Horario',
@@ -1957,7 +2073,15 @@ const LANG_T = {
     'opt.wed':'Coreografía de Boda','opt.comp':'Preparación para Competición','opt.other':'Algo más',
     'ph.fn':'María','ph.ln':'García','ph.em':'tu@correo.com',
     'ph.msg':'Cuéntale a Judith sobre tu nivel de experiencia y lo que esperas trabajar…',
-    'wa.msg':'¡Hola! ¿Tienes alguna pregunta?<br>Escríbenos aquí.'
+    'wa.msg':'¡Hola! ¿Tienes alguna pregunta?<br>Escríbenos aquí.',
+    'why.lbl':'Tu Entrenamiento',
+    'why.hdg':'No solo aprendas los pasos.<br><em>Conviértete en bailarín.</em>',
+    'why.lead':'El método de Judith va más allá de la coreografía — te enseña cómo moverte, sentir y conectarte con la música. Ya sea que empieces desde cero o quieras perfeccionar tu técnica, cada clase se basa en fundamentos reales.',
+    'why.f1.t':'Gana Confianza','why.f1.b':'Desde tu primera clase, sentirás que tu cuerpo responde. Los pequeños logros se acumulan rápido — la mayoría de los estudiantes sienten la música diferente en un mes.',
+    'why.f2.t':'Mejora Tu Técnica','why.f2.b':'Salsa On2 real — no solo pasos a copiar, sino la mecánica detrás de cada vuelta, aislación y cambio de tiempo explicada claramente.',
+    'why.f3.t':'Entiende la Musicalidad','why.f3.b':'Aprende a escuchar la clave, sentir la conga y dejar que la música guíe tu cuerpo — no al revés.',
+    'why.f4.t':'Diviértete y Conecta','why.f4.b':'Un estudio cálido, una comunidad real y clases que te dejan con energía — no agotado. Bailar debe sentirse bien.',
+    'why.vid':'Video de clase<br>próximamente'
   }
 };
 
